@@ -1,0 +1,38 @@
+{
+  "name": "george-categories-component",
+  "version": "1.0.0",
+  "description": "categorization module for naive Twitch clone",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "build": "webpack",
+    "start": "nodemon ./server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gdfekaris/george-categories-component.git"
+  },
+  "keywords": [
+    "FEC",
+    "front-end-capstone",
+    "HackReactor"
+  ],
+  "author": "george",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gdfekaris/george-categories-component/issues"
+  },
+  "homepage": "https://github.com/gdfekaris/george-categories-component#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "express": "^4.16.4",
+    "jest": "^23.6.0",
+    "morgan": "^1.9.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "webpack": "^4.28.1"
+  }
+}

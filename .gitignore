@@ -1,0 +1,7 @@
+# Files to be ignored
+
+# node stuff
+node_modules
+
+# webpack stuff
+client/dist/bundle.js
