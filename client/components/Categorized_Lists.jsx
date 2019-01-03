@@ -8,24 +8,25 @@ export default class Categorized_Lists extends React.Component {
     this.state = {
       count: 0
     }
-  }
-  /*
-  bind component functions here
-  use this syntax --> this.func = this.func.bind(this)
-  */
+    this.count = this.count.bind(this);
+  };
 
+  count = () => {
+    this.setState((prevState) => ({
+      count: prevState.count + 1,
+    }));
+  }
 
   render() {
     return (
       <div>
         <span>Categorization Component</span>
         <div>
-          <button>
+          <button onClick={this.count} data-testid="counter-button">
             {this.state.count}
           </button>
         </div>
       </div>
     );
   }
-
 }
