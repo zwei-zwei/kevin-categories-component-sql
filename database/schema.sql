@@ -1,8 +1,31 @@
+-- Create database
 
-USE nameOfDatabase;
+USE catgegories_module;
 
-CREATE TABLE nameOfTable (
-  /* describe table here */
+CREATE TABLE users (
+  id INT unsigned NOT NULL AUTO_INCREMENT,
+  display_name VARCHAR(150) NOT NULL,
+  personal_description VARCHAR(500),
+  profile_image_url VARCHAR(1000) NOT NULL,
+  offline_image_url VARCHAR(1000),
+  view_count INT,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE games (
+  id id INT unsigned NOT NULL AUTO_INCREMENT,
+  title VARCHAR(150) NOT NULL,
+  box_art_url VARCHAR(1000) NOT NULL,
+);
+
+CREATE TABLE videos (
+  id INT unsigned NOT NULL AUTO_INCREMENT,
+  title VARCHAR(150) NOT NULL,
+  video_description VARCHAR(500),
+  url VARCHAR(1000) NOT NULL,
+  thumbnail_url VARCHAR(1000) NOT NULL,
+  view_count INT,
+  PRIMARY KEY (id),
 );
 
 

@@ -1,9 +1,10 @@
 const mysql = require('mysql');
 
-const dbConnection = mysql.createConnection({
+const connection = mysql.createConnection({
+  host: 'localhost',
   user: 'user',
   password: 'password',
-  database: 'database'
+  database: 'categories_module'
 });
 
-module.exports.dbConnection ==dbConnection;
+module.exports.connection = connection;
