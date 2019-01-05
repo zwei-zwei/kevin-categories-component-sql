@@ -1,12 +1,21 @@
 const express = require(`express`);
 const app = express();
 const bodyParser = require(`body-parser`);
+const dbConnection = require('../database');
 
 app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../public`));
 
-app.get(`/catgeories`, () => {
-  //fill me in
+app.get(`/catgeories`, (req, res) => {
+  dbConnection.connect();
+  dbConnection.query('SELECT * FROM users', (err, results) => {
+    if (err) {
+      console.log(`ERROR: ${err}`)
+    } else {
+      console.log(results);
+    }
+  });
+  dbConnection.end();
 });
 
 app.get(`/categories/getFromMain`, () => {
