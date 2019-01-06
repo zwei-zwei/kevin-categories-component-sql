@@ -2,6 +2,8 @@ const express = require(`express`);
 const app = express();
 const bodyParser = require(`body-parser`);
 const db = require('../database');
+const faker = require('faker');
+const user = require('../database/seedScript')
 
 app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../public`));
@@ -29,6 +31,11 @@ app.put(`categories/writeToCats`, () => {
   //fill me in
 });
 
+app.get('/fakes', (req, res) => {
+  let fakeUsername = faker.random.word() + faker.internet.userName();
+  let name = fakeUsername.replace(/ /, '');
+  res.send();
+});
 
 // port assignment needs re-writing
 // to adjust for deployment
