@@ -26,7 +26,7 @@ CREATE TABLE videos (
   video_description VARCHAR(500),
   url VARCHAR(500) NOT NULL,
   thumbnail_url VARCHAR(500) NOT NULL,
-  duration TIME, /* 'HH:MM:SS[.fraction]' */
+  duration VARCHAR(9), /* 'HH:MM:SS[.fraction]' */
   view_count INT,
   created_at DATE, /* 'YYYY-MM-DD' */
   streamer_id INT unsigned NOT NULL,
@@ -42,9 +42,9 @@ CREATE TABLE clips (
   clip_description VARCHAR(500),
   url VARCHAR(500) NOT NULL,
   thumbnail_url VARCHAR(500) NOT NULL,
-  duration TIME,
+  duration VARCHAR(9),
   view_count INT,
-  created_at DATETIME,
+  created_at DATE,
   streamer_id INT unsigned NOT NULL,
   game_id INT unsigned NOT NULL,
   video_id INT unsigned NOT NULL,
