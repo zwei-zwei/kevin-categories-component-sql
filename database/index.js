@@ -1,9 +1,18 @@
 const mysql = require('mysql');
 
-const dbConnection = mysql.createConnection({
-  user: 'user',
-  password: 'password',
-  database: 'database'
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'toor',
+  database: 'categories_module'
 });
 
-module.exports.dbConnection ==dbConnection;
+connection.connect((err) => {
+  if (err) {
+    console.log(`ERROR: ${err.message}`);
+  } else {
+    console.log('database connected');
+  }
+});
+
+module.exports.connection = connection;
