@@ -131,15 +131,12 @@ export default class RecentBroadcasts extends React.Component {
   };
 
   renderCarousel = () => {
-    if (this.state.videos === null) {
-      return null;
-    } else {
       return (
         <div>
           <Container>
             <Titles>Recent broadcasts <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Expand All ></a></Titles>
             <Carousel slidesToShow={3} wrapAround={false} cellSpacing={30} renderBottomCenterControls={false} initialSlideHeight={220} initialSlideWidth={300}>
-              <Info>
+              <Info data-testid="video-info">
                 <Slides img={this.state.videos[0].thumbnail_url}>
                   <Duration>► {this.state.videos[0].duration}</Duration>
                   <Views>{this.state.videos[0].view_count} views</Views>
@@ -152,7 +149,7 @@ export default class RecentBroadcasts extends React.Component {
                   <GameTitle><a href="">{this.state.videos[0].game_name}</a></GameTitle>
                 </Details>
               </Info>
-              <Info>
+              <Info data-testid="video-info">
                 <Slides img={this.state.videos[1].thumbnail_url}>
                   <Duration>► {this.state.videos[1].duration}</Duration>
                   <Views>{this.state.videos[1].view_count} views</Views>
@@ -165,7 +162,7 @@ export default class RecentBroadcasts extends React.Component {
                   <GameTitle><a href="">{this.state.videos[1].game_name}</a></GameTitle>
                 </Details>
               </Info>
-              <Info>
+              <Info data-testid="video-info">
                 <Slides img={this.state.videos[2].thumbnail_url}>
                   <Duration>► {this.state.videos[2].duration}</Duration>
                   <Views>{this.state.videos[2].view_count} views</Views>
@@ -178,7 +175,7 @@ export default class RecentBroadcasts extends React.Component {
                   <GameTitle><a href="">{this.state.videos[2].game_name}</a></GameTitle>
                 </Details>
               </Info>
-              <Info>
+              <Info data-testid="video-info">
                 <Slides img={this.state.videos[4].thumbnail_url}>
                   <Duration>► {this.state.videos[4].duration}</Duration>
                   <Views>{this.state.videos[4].view_count} views</Views>
@@ -191,7 +188,7 @@ export default class RecentBroadcasts extends React.Component {
                   <GameTitle><a href="">{this.state.videos[4].game_name}</a></GameTitle>
                 </Details>
               </Info>
-              <Info>
+              <Info data-testid="video-info">
                 <Slides img={this.state.videos[5].thumbnail_url}>
                   <Duration>► {this.state.videos[5].duration}</Duration>
                   <Views>{this.state.videos[5].view_count} views</Views>
@@ -204,7 +201,7 @@ export default class RecentBroadcasts extends React.Component {
                   <GameTitle><a href="">{this.state.videos[5].game_name}</a></GameTitle>
                 </Details>
               </Info>
-              <Info>
+              <Info data-testid="video-info">
                 <Slides img={this.state.videos[6].thumbnail_url}>
                   <Duration>► {this.state.videos[6].duration}</Duration>
                   <Views>{this.state.videos[6].view_count} views</Views>
@@ -217,7 +214,7 @@ export default class RecentBroadcasts extends React.Component {
                   <GameTitle><a href="">{this.state.videos[6].game_name}</a></GameTitle>
                 </Details>
               </Info>
-              <Info>
+              <Info data-testid="video-info">
                 <Slides img={this.state.videos[7].thumbnail_url}>
                   <Duration>► {this.state.videos[7].duration}</Duration>
                   <Views>{this.state.videos[7].view_count} views</Views>
@@ -230,7 +227,7 @@ export default class RecentBroadcasts extends React.Component {
                   <GameTitle><a href="">{this.state.videos[8].game_name}</a></GameTitle>
                 </Details>
               </Info>
-              <Info>
+              <Info data-testid="video-info">
                 <Slides img={this.state.videos[8].thumbnail_url}>
                   <Duration>► {this.state.videos[8].duration}</Duration>
                   <Views>{this.state.videos[8].view_count} views</Views>
@@ -243,7 +240,7 @@ export default class RecentBroadcasts extends React.Component {
                   <GameTitle><a href="">{this.state.videos[8].game_name}</a></GameTitle>
                 </Details>
               </Info>
-              <Info>
+              <Info data-testid="video-info">
                 <Slides img={this.state.videos[9].thumbnail_url}>
                   <Duration>► {this.state.videos[9].duration}</Duration>
                   <Views>{this.state.videos[9].view_count} views</Views>
@@ -256,7 +253,7 @@ export default class RecentBroadcasts extends React.Component {
                   <GameTitle><a href="">{this.state.videos[9].game_name}</a></GameTitle>
                 </Details>
               </Info>
-              <Info>
+              <Info data-testid="video-info">
                 <Slides img={this.state.videos[10].thumbnail_url}>
                   <Duration>► {this.state.videos[10].duration}</Duration>
                   <Views>{this.state.videos[10].view_count} views</Views>
@@ -269,7 +266,7 @@ export default class RecentBroadcasts extends React.Component {
                   <GameTitle><a href="">{this.state.videos[10].game_name}</a></GameTitle>
                 </Details>
               </Info>
-              <Info>
+              <Info data-testid="video-info">
                 <Slides img={this.state.videos[11].thumbnail_url}>
                   <Duration>► {this.state.videos[11].duration}</Duration>
                   <Views>{this.state.videos[11].view_count} views</Views>
@@ -286,25 +283,29 @@ export default class RecentBroadcasts extends React.Component {
           </Container>
         </div>
       );
-    }
   }
 
   componentDidUpdate() {
     this.setState((prevState, props) => {
-      if (prevState.videos === null || prevState.videos[0].video_title !== props.videos[0].video_title) {
-          return { videos: props.videos };
-        } else {
-          return;
-        }
-      });
+      let prevTopVideo = prevState.videos[0].video_title;
+      let newTopVideo = props.videos[0].video_title;
+      if (prevState.videos === null || prevTopVideo !== newTopVideo) {
+        return { videos: props.videos };
+      } else {
+        return;
+      }
+    });
   };
 
   render() {
-    return (
-      <div>
-        {this.renderCarousel()}
-      </div>
-    );
+    if (this.state.videos === null) {
+      return (<div data-testid="loading-div">Loading ...</div>)
+    } else {
+      return (
+        <div data-testid="main-container">
+          {this.renderCarousel()}
+        </div>
+      );
+    }
   };
-
 }

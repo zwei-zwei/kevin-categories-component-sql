@@ -91,17 +91,17 @@ module.exports = () => {
                 game_id)
                 VALUES
                 ('${faker.internet.userName()/* user_name */}',
-              '${faker.hacker.verb() + ' ' + faker.hacker.noun()/* game_name */}',
-              '${faker.random.image()/* game_box_art_url */}',
-              '${faker.random.word() + ' ' + faker.random.word()/* video_title */}',
-              '${faker.lorem.sentence()/* video_description */}',
-              '${faker.internet.url()/* url */}',
-              '${faker.random.image()/* thumbnail_url */}',
-              '${JSON.stringify(faker.date.recent()).substring(12, 20)/* duration */}',
-              '${faker.random.number()/* view_count */}',
-              '${Math.floor((Math.random() * 101) + 1)/* created_at */}',
-              '${result.users[0].streamer_id/* streamer_id */}',
-              '${result.games[i].game_id/* game_id */}')`;
+                  '${faker.hacker.verb() + ' ' + faker.hacker.noun()/* game_name */}',
+                  '${faker.random.image()/* game_box_art_url */}',
+                  '${faker.random.word() + ' ' + faker.random.word()/* video_title */}',
+                  '${faker.lorem.sentence()/* video_description */}',
+                  '${faker.internet.url()/* url */}',
+                  '${faker.random.image()/* thumbnail_url */}',
+                  '${JSON.stringify(faker.date.recent()).substring(12, 20)/* duration */}',
+                  '${faker.random.number()/* view_count */}',
+                  '${Math.floor((Math.random() * 101) + 1)/* created_at */}',
+                  '${result.users[0].streamer_id/* streamer_id */}',
+                  '${result.games[i].game_id/* game_id */}')`;
         if (i === result.games.length - 1) {
           db.connection.query(video, (err, res) => {
             if (err) {

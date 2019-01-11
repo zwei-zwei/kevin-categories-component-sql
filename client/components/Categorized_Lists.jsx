@@ -11,7 +11,6 @@ export default class Categorized_Lists extends React.Component {
       recentHighlights: null,
       popularClips: null,
     }
-
   };
 
   componentDidMount() {
@@ -33,7 +32,7 @@ export default class Categorized_Lists extends React.Component {
       return allVideos;
     })
     .then((allVideos) => {
-      console.log(allVideos);
+      //console.log(allVideos);
       this.setState({
         recentBroadcasts: allVideos.recentBroadcasts,
         recentHighlights: allVideos.recentHighlights,
@@ -43,13 +42,17 @@ export default class Categorized_Lists extends React.Component {
   };
 
   render() {
-    return (
-      <div>
-        <RecentBroadcasts videos={this.state.recentBroadcasts} />
-        <RecentHighlights videos={this.state.recentHighlights} />
-        <PopularClips videos={this.state.popularClips} />
-      </div>
-    );
+    if (this.state.recentBroadcasts === null || this.state.recentHighlights === null || this.state.popularClips === null) {
+      return (<div data-testid="loading-div">Loading ...</div>);
+    } else {
+      return (
+        <div data-testid="main-container">
+          <RecentBroadcasts videos={this.state.recentBroadcasts} />
+          <RecentHighlights videos={this.state.recentHighlights} />
+          <PopularClips videos={this.state.popularClips} />
+        </div>
+      );
+    }
   }
 }
 

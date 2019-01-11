@@ -20,6 +20,7 @@ app.get('/recent-broadcasts', (req, res) => {
     .then((data) => {
       data.sort((a, b) => { return a.created_at - b.created_at; });
       let recentBroadcasts = data.slice(0, 15);
+      //console.log('RECENT BROADCASTS =>', recentBroadcasts);
       return res.send(recentBroadcasts);
     });
 });
@@ -40,6 +41,7 @@ app.get('/recent-highlights', (req, res) => {
       let temp = data.slice(0, 50);
       temp.sort((a, b) => { return b.view_count - a.view_count; });
       let recentHighlights = temp.slice(0, 15);
+      //console.log('RECENT HIGHLIGHTS =>', recentHighlights);
       return res.send(recentHighlights);
     });
 });
@@ -58,6 +60,7 @@ app.get('/popular-clips', (req, res) => {
     .then((data) => {
       data.sort((a, b) => { return b.view_count - a.view_count; });
       let popularClips = data.slice(0, 15);
+      //console.log('POPULAR CLIPS =>', popularClips);
       return res.send(popularClips);
     });
 });
