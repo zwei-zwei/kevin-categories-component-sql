@@ -16,11 +16,6 @@ const Info = styled.div`
   width: 100%;
   overflow: hidden;
 `;
-// height: 220px;
-// width: 300px;
-
-// height: 150px;
-// width: 300px;
 
 const Slides = styled.div`
   position: relative;
@@ -88,7 +83,6 @@ const Titles = styled.div`
   font-weight: bold;
   padding-bottom: 20px;
   overflow: hidden;
-
 `;
 
 const Duration = styled.div`
@@ -131,36 +125,13 @@ export default class PopularClips extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      popularVideos: null,
-      currentImageIndex: 0
+      videos: this.props.videos,
     }
-    this.getPopularVideos = this.getPopularVideos.bind(this);
     this.renderCarousel = this.renderCarousel.bind(this);
   };
 
-  getPopularVideos = () => {
-    let videos = this.props.videos;
-    let currentPopList = this.state.popularVideos;
-    let newPopList;
-    let newTopTitle;
-    if (videos === undefined) {
-      return null;
-    } else {
-      videos.sort((a, b) => { return b.view_count - a.view_count; });
-      newPopList = videos.slice(0, 10);
-      newTopTitle = newPopList[0].video_title;
-      this.setState((prevState, props) => {
-        if (currentPopList === null || prevState.popularVideos[0].video_title !== newTopTitle) {
-          return { popularVideos: newPopList };
-        } else {
-          return;
-        }
-      });
-    }
-  };
-
   renderCarousel = () => {
-    if (this.state.popularVideos === null) {
+    if (this.state.videos === null) {
       return null;
     } else {
       return (
@@ -169,120 +140,146 @@ export default class PopularClips extends React.Component {
             <Titles>Popular clips <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Expand All ></a></Titles>
             <Carousel slidesToShow={3} wrapAround={false} cellSpacing={30} renderBottomCenterControls={false} initialSlideHeight={220} initialSlideWidth={300}>
               <Info>
-                <Slides img={this.state.popularVideos[0].thumbnail_url}>
-                  <Duration>► {this.state.popularVideos[0].duration}</Duration>
-                  <Views>{this.state.popularVideos[0].view_count} views</Views>
-                  <TimeStamp>{Math.floor((Math.random() * 100) + 1)} hours ago</TimeStamp>
+                <Slides img={this.state.videos[0].thumbnail_url}>
+                  <Duration>► {this.state.videos[0].duration}</Duration>
+                  <Views>{this.state.videos[0].view_count} views</Views>
+                  <TimeStamp>{this.state.videos[0].created_at} hours ago</TimeStamp>
                 </Slides>
                 <Details>
-                  <GameThumbnail img={this.state.popularVideos[0].thumbnail_url}></GameThumbnail>
-                  <VideoTitles><a href="">{this.state.popularVideos[0].video_title}</a></VideoTitles>
-                  <GamerName><a href="">UserName</a></GamerName>
-                  <GameTitle><a href="">GameTitle</a></GameTitle>
+                  <GameThumbnail img={this.state.videos[0].thumbnail_url}></GameThumbnail>
+                  <VideoTitles><a href="">{this.state.videos[0].clip_title}</a></VideoTitles>
+                  <GamerName><a href="">{this.state.videos[0].user_name}</a></GamerName>
+                  <GameTitle><a href="">{this.state.videos[0].game_name}</a></GameTitle>
                 </Details>
               </Info>
               <Info>
-                <Slides img={this.state.popularVideos[1].thumbnail_url}>
-                  <Duration>► {this.state.popularVideos[1].duration}</Duration>
-                  <Views>{this.state.popularVideos[1].view_count} views</Views>
-                  <TimeStamp>{Math.floor((Math.random() * 100) + 1)} hours ago</TimeStamp>
+                <Slides img={this.state.videos[1].thumbnail_url}>
+                  <Duration>► {this.state.videos[1].duration}</Duration>
+                  <Views>{this.state.videos[1].view_count} views</Views>
+                  <TimeStamp>{this.state.videos[1].created_at} hours ago</TimeStamp>
                 </Slides>
                 <Details>
-                  <GameThumbnail img={this.state.popularVideos[1].thumbnail_url}></GameThumbnail>
-                  <VideoTitles><a href="">{this.state.popularVideos[1].video_title}</a></VideoTitles>
-                  <GamerName><a href="">UserName</a></GamerName>
-                  <GameTitle><a href="">GameTitle</a></GameTitle>
+                  <GameThumbnail img={this.state.videos[1].game_box_art_url}></GameThumbnail>
+                  <VideoTitles><a href="">{this.state.videos[1].clip_title}</a></VideoTitles>
+                  <GamerName><a href="">{this.state.videos[1].user_name}</a></GamerName>
+                  <GameTitle><a href="">{this.state.videos[1].game_name}</a></GameTitle>
                 </Details>
               </Info>
               <Info>
-                <Slides img={this.state.popularVideos[2].thumbnail_url}>
-                  <Duration>► {this.state.popularVideos[2].duration}</Duration>
-                  <Views>{this.state.popularVideos[2].view_count} views</Views>
-                  <TimeStamp>{Math.floor((Math.random() * 100) + 1)} hours ago</TimeStamp>
+                <Slides img={this.state.videos[2].thumbnail_url}>
+                  <Duration>► {this.state.videos[2].duration}</Duration>
+                  <Views>{this.state.videos[2].view_count} views</Views>
+                  <TimeStamp>{this.state.videos[2].created_at} hours ago</TimeStamp>
                 </Slides>
                 <Details>
-                  <GameThumbnail img={this.state.popularVideos[2].thumbnail_url}></GameThumbnail>
-                  <VideoTitles><a href="">{this.state.popularVideos[2].video_title}</a></VideoTitles>
-                  <GamerName><a href="">UserName</a></GamerName>
-                  <GameTitle><a href="">GameTitle</a></GameTitle>
+                  <GameThumbnail img={this.state.videos[2].game_box_art_url}></GameThumbnail>
+                  <VideoTitles><a href="">{this.state.videos[2].clip_title}</a></VideoTitles>
+                  <GamerName><a href="">{this.state.videos[2].user_name}</a></GamerName>
+                  <GameTitle><a href="">{this.state.videos[2].game_name}</a></GameTitle>
                 </Details>
               </Info>
               <Info>
-                <Slides img={this.state.popularVideos[4].thumbnail_url}>
-                  <Duration>► {this.state.popularVideos[4].duration}</Duration>
-                  <Views>{this.state.popularVideos[4].view_count} views</Views>
-                  <TimeStamp>{Math.floor((Math.random() * 100) + 1)} hours ago</TimeStamp>
+                <Slides img={this.state.videos[4].thumbnail_url}>
+                  <Duration>► {this.state.videos[4].duration}</Duration>
+                  <Views>{this.state.videos[4].view_count} views</Views>
+                  <TimeStamp>{this.state.videos[4].created_at} hours ago</TimeStamp>
                 </Slides>
                 <Details>
-                  <GameThumbnail img={this.state.popularVideos[4].thumbnail_url}></GameThumbnail>
-                  <VideoTitles><a href="">{this.state.popularVideos[4].video_title}</a></VideoTitles>
-                  <GamerName><a href="">UserName</a></GamerName>
-                  <GameTitle><a href="">GameTitle</a></GameTitle>
+                  <GameThumbnail img={this.state.videos[4].game_box_art_url}></GameThumbnail>
+                  <VideoTitles><a href="">{this.state.videos[4].clip_title}</a></VideoTitles>
+                  <GamerName><a href="">{this.state.videos[4].user_name}</a></GamerName>
+                  <GameTitle><a href="">{this.state.videos[4].game_name}</a></GameTitle>
                 </Details>
               </Info>
               <Info>
-                <Slides img={this.state.popularVideos[5].thumbnail_url}>
-                  <Duration>► {this.state.popularVideos[5].duration}</Duration>
-                  <Views>{this.state.popularVideos[5].view_count} views</Views>
-                  <TimeStamp>{Math.floor((Math.random() * 100) + 1)} hours ago</TimeStamp>
+                <Slides img={this.state.videos[5].thumbnail_url}>
+                  <Duration>► {this.state.videos[5].duration}</Duration>
+                  <Views>{this.state.videos[5].view_count} views</Views>
+                  <TimeStamp>{this.state.videos[5].created_at} hours ago</TimeStamp>
                 </Slides>
                 <Details>
-                  <GameThumbnail img={this.state.popularVideos[5].thumbnail_url}></GameThumbnail>
-                  <VideoTitles><a href="">{this.state.popularVideos[5].video_title}</a></VideoTitles>
-                  <GamerName><a href="">UserName</a></GamerName>
-                  <GameTitle><a href="">GameTitle</a></GameTitle>
+                  <GameThumbnail img={this.state.videos[5].game_box_art_url}></GameThumbnail>
+                  <VideoTitles><a href="">{this.state.videos[5].clip_title}</a></VideoTitles>
+                  <GamerName><a href="">{this.state.videos[5].user_name}</a></GamerName>
+                  <GameTitle><a href="">{this.state.videos[5].game_name}</a></GameTitle>
                 </Details>
               </Info>
               <Info>
-                <Slides img={this.state.popularVideos[6].thumbnail_url}>
-                  <Duration>► {this.state.popularVideos[6].duration}</Duration>
-                  <Views>{this.state.popularVideos[6].view_count} views</Views>
-                  <TimeStamp>{Math.floor((Math.random() * 100) + 1)} hours ago</TimeStamp>
+                <Slides img={this.state.videos[6].thumbnail_url}>
+                  <Duration>► {this.state.videos[6].duration}</Duration>
+                  <Views>{this.state.videos[6].view_count} views</Views>
+                  <TimeStamp>{this.state.videos[6].created_at} hours ago</TimeStamp>
                 </Slides>
                 <Details>
-                  <GameThumbnail img={this.state.popularVideos[6].thumbnail_url}></GameThumbnail>
-                  <VideoTitles><a href="">{this.state.popularVideos[6].video_title}</a></VideoTitles>
-                  <GamerName><a href="">UserName</a></GamerName>
-                  <GameTitle><a href="">GameTitle</a></GameTitle>
+                  <GameThumbnail img={this.state.videos[6].game_box_art_url}></GameThumbnail>
+                  <VideoTitles><a href="">{this.state.videos[6].clip_title}</a></VideoTitles>
+                  <GamerName><a href="">{this.state.videos[6].user_name}</a></GamerName>
+                  <GameTitle><a href="">{this.state.videos[6].game_name}</a></GameTitle>
                 </Details>
               </Info>
               <Info>
-                <Slides img={this.state.popularVideos[7].thumbnail_url}>
-                  <Duration>► {this.state.popularVideos[7].duration}</Duration>
-                  <Views>{this.state.popularVideos[7].view_count} views</Views>
-                  <TimeStamp>{Math.floor((Math.random() * 100) + 1)} hours ago</TimeStamp>
+                <Slides img={this.state.videos[7].thumbnail_url}>
+                  <Duration>► {this.state.videos[7].duration}</Duration>
+                  <Views>{this.state.videos[7].view_count} views</Views>
+                  <TimeStamp>{this.state.videos[7].created_at} hours ago</TimeStamp>
                 </Slides>
                 <Details>
-                  <GameThumbnail img={this.state.popularVideos[7].thumbnail_url}></GameThumbnail>
-                  <VideoTitles><a href="">{this.state.popularVideos[7].video_title}</a></VideoTitles>
-                  <GamerName><a href="">UserName</a></GamerName>
-                  <GameTitle><a href="">GameTitle</a></GameTitle>
+                  <GameThumbnail img={this.state.videos[7].game_box_art_url}></GameThumbnail>
+                  <VideoTitles><a href="">{this.state.videos[7].clip_title}</a></VideoTitles>
+                  <GamerName><a href="">{this.state.videos[7].user_name}</a></GamerName>
+                  <GameTitle><a href="">{this.state.videos[8].game_name}</a></GameTitle>
                 </Details>
               </Info>
               <Info>
-                <Slides img={this.state.popularVideos[8].thumbnail_url}>
-                  <Duration>► {this.state.popularVideos[8].duration}</Duration>
-                  <Views>{this.state.popularVideos[8].view_count} views</Views>
-                  <TimeStamp>{Math.floor((Math.random() * 100) + 1)} hours ago</TimeStamp>
+                <Slides img={this.state.videos[8].thumbnail_url}>
+                  <Duration>► {this.state.videos[8].duration}</Duration>
+                  <Views>{this.state.videos[8].view_count} views</Views>
+                  <TimeStamp>{this.state.videos[8].created_at} hours ago</TimeStamp>
                 </Slides>
                 <Details>
-                  <GameThumbnail img={this.state.popularVideos[8].thumbnail_url}></GameThumbnail>
-                  <VideoTitles><a href="">{this.state.popularVideos[8].video_title}</a></VideoTitles>
-                  <GamerName><a href="">UserName</a></GamerName>
-                  <GameTitle><a href="">GameTitle</a></GameTitle>
+                  <GameThumbnail img={this.state.videos[8].game_box_art_url}></GameThumbnail>
+                  <VideoTitles><a href="">{this.state.videos[8].clip_title}</a></VideoTitles>
+                  <GamerName><a href="">{this.state.videos[8].user_name}</a></GamerName>
+                  <GameTitle><a href="">{this.state.videos[8].game_name}</a></GameTitle>
                 </Details>
               </Info>
               <Info>
-                <Slides img={this.state.popularVideos[9].thumbnail_url}>
-                  <Duration>► {this.state.popularVideos[9].duration}</Duration>
-                  <Views>{this.state.popularVideos[9].view_count} views</Views>
-                  <TimeStamp>{Math.floor((Math.random() * 100) + 1)} hours ago</TimeStamp>
+                <Slides img={this.state.videos[9].thumbnail_url}>
+                  <Duration>► {this.state.videos[9].duration}</Duration>
+                  <Views>{this.state.videos[9].view_count} views</Views>
+                  <TimeStamp>{this.state.videos[9].created_at} hours ago</TimeStamp>
                 </Slides>
                 <Details>
-                  <GameThumbnail img={this.state.popularVideos[9].thumbnail_url}></GameThumbnail>
-                  <VideoTitles><a href="">{this.state.popularVideos[9].video_title}</a></VideoTitles>
-                  <GamerName><a href="">UserName</a></GamerName>
-                  <GameTitle><a href="">GameTitle</a></GameTitle>
+                  <GameThumbnail img={this.state.videos[9].game_box_art_url}></GameThumbnail>
+                  <VideoTitles><a href="">{this.state.videos[9].clip_title}</a></VideoTitles>
+                  <GamerName><a href="">{this.state.videos[9].user_name}</a></GamerName>
+                  <GameTitle><a href="">{this.state.videos[9].game_name}</a></GameTitle>
+                </Details>
+              </Info>
+              <Info>
+                <Slides img={this.state.videos[10].thumbnail_url}>
+                  <Duration>► {this.state.videos[10].duration}</Duration>
+                  <Views>{this.state.videos[10].view_count} views</Views>
+                  <TimeStamp>{this.state.videos[10].created_at} hours ago</TimeStamp>
+                </Slides>
+                <Details>
+                  <GameThumbnail img={this.state.videos[10].game_box_art_url}></GameThumbnail>
+                  <VideoTitles><a href="">{this.state.videos[10].clip_title}</a></VideoTitles>
+                  <GamerName><a href="">{this.state.videos[10].user_name}</a></GamerName>
+                  <GameTitle><a href="">{this.state.videos[10].game_name}</a></GameTitle>
+                </Details>
+              </Info>
+              <Info>
+                <Slides img={this.state.videos[11].thumbnail_url}>
+                  <Duration>► {this.state.videos[11].duration}</Duration>
+                  <Views>{this.state.videos[11].view_count} views</Views>
+                  <TimeStamp>{this.state.videos[11].created_at} hours ago</TimeStamp>
+                </Slides>
+                <Details>
+                  <GameThumbnail img={this.state.videos[11].game_box_art_url}></GameThumbnail>
+                  <VideoTitles><a href="">{this.state.videos[11].clip_title}</a></VideoTitles>
+                  <GamerName><a href="">{this.state.videos[11].user_name}</a></GamerName>
+                  <GameTitle><a href="">{this.state.videos[11].game_name}</a></GameTitle>
                 </Details>
               </Info>
             </Carousel>
@@ -293,7 +290,13 @@ export default class PopularClips extends React.Component {
   }
 
   componentDidUpdate() {
-    this.getPopularVideos();
+    this.setState((prevState, props) => {
+      if (prevState.videos === null || prevState.videos[0].clip_title !== props.videos[0].clip_title) {
+        return { videos: props.videos };
+      } else {
+        return;
+      }
+    });
   };
 
   render() {
