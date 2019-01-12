@@ -53,6 +53,5 @@ export default class Categorized_Lists extends React.Component {
         </div>
       );
     }
-  }
-}
-
+  };
+};

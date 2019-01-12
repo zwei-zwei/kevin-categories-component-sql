@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for george-categories-component/client/components/PopularClips.jsx</title>
+    <title>Code coverage report for george-categories-component/client/components/SlideGenerator.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,32 +16,32 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">george-categories-component/client/components</a> PopularClips.jsx
+      <a href="../../../index.html">All files</a> / <a href="index.html">george-categories-component/client/components</a> SlideGenerator.jsx
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">36.36% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/11</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>1/6</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/4</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">36.36% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/11</span>
+        <span class='fraction'>1/1</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -75,38 +75,32 @@
 30
 31
 32
-33
-34
-35
-36</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+33</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">180x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -114,39 +108,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import CarouselGenerator from './CarouselGenerator.jsx';
+import {
+  Info,
+  Image,
+  Details,
+  GameThumbnail,
+  VideoTitles,
+  GamerName,
+  GameTitle,
+  Duration,
+  Views,
+  TimeStamp
+} from './Styles.jsx';
 &nbsp;
-export default class PopularClips extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      videos: this.props.videos,
-      title: 'Popular clips'
-    }
-  };
-&nbsp;
-<span class="fstat-no" title="function not covered" >  co</span>mponentDidUpdate() {
-<span class="cstat-no" title="statement not covered" >    this.setState(<span class="fstat-no" title="function not covered" >(p</span>revState, props) =&gt; {</span>
-      let prevTopVideo = <span class="cstat-no" title="statement not covered" >prevState.videos[0].video_title;</span>
-      let newTopVideo = <span class="cstat-no" title="statement not covered" >props.videos[0].video_title;</span>
-<span class="cstat-no" title="statement not covered" >      if (prevState.videos === null || prevTopVideo !== newTopVideo) {</span>
-<span class="cstat-no" title="statement not covered" >        return { videos: props.videos };</span>
-      } else {
-<span class="cstat-no" title="statement not covered" >        return;</span>
-      }
-    });
-  };
-&nbsp;
-  render() {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.state.videos === null) {
-<span class="cstat-no" title="statement not covered" >      return (&lt;div data-testid="loading-div"&gt;Loading ...&lt;/div&gt;)</span>
-    } else {
-      return (
-        &lt;div data-testid="main-container"&gt;
-          &lt;CarouselGenerator videos={this.state.videos} title={this.state.title}&gt;&lt;/CarouselGenerator&gt;
-        &lt;/div&gt;
-      );
-    }
+export default class SlideGenerator extends React.Component {
+  render () {
+    return (
+      &lt;Info data-testid="video-info" key={this.props.key}&gt;
+        &lt;Image img={this.props.video.thumbnail_url}&gt;
+          &lt;Duration&gt;► {this.props.video.duration}&lt;/Duration&gt;
+          &lt;Views&gt;{this.props.video.view_count} views&lt;/Views&gt;
+          &lt;TimeStamp&gt;{this.props.video.created_at} hours ago&lt;/TimeStamp&gt;
+        &lt;/Image&gt;
+        &lt;Details&gt;
+          &lt;GameThumbnail img={this.props.video.game_box_art_url}&gt;&lt;/GameThumbnail&gt;
+          &lt;VideoTitles&gt;&lt;a href=""&gt;{this.props.video.title}&lt;/a&gt;&lt;/VideoTitles&gt;
+          &lt;GamerName&gt;&lt;a href=""&gt;{this.props.video.user_name}&lt;/a&gt;&lt;/GamerName&gt;
+          &lt;GameTitle&gt;&lt;a href=""&gt;{this.props.video.game_name}&lt;/a&gt;&lt;/GameTitle&gt;
+        &lt;/Details&gt;
+      &lt;/Info&gt;
+    );
   };
 };</pre></td></tr>
 </table></pre>
