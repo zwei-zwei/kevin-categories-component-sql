@@ -6,36 +6,64 @@ const db = require('../database');
 app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../public`));
 
-app.get('/popular', (req, res) => {
-  db.connection.query('SELECT * FROM videos', (error, results, fields) => {
-    if (error) {
-      res.send(error);
-    } else {
-      //console.log(results);
-      res.send(results);
-    }
-  });
+app.get('/recent-broadcasts', (req, res) => {
+  new Promise (function(resolve, reject) {
+    db.connection.query('SELECT * FROM videos', (error, results, fields) => {
+      if (error) {
+        res.send(error);
+      } else {
+        resolve(results);
+      }
+    });
+  })
+    .then((results) => JSON.parse(JSON.stringify(results)))
+    .then((data) => {
+      data.sort((a, b) => { return a.created_at - b.created_at; });
+      let recentBroadcasts = data.slice(0, 15);
+      //console.log('RECENT BROADCASTS =>', recentBroadcasts);
+      return res.send(recentBroadcasts);
+    });
 });
 
-// app.get('/recent', (req, res) => {
-//   db.connection.query('SELECT * FROM videos', (error, results, fields) => {
-//     if (error) {
-//       res.send(error);
-//     } else {
-//       res.send(JSON.parse(JSON.stringify(results)));
-//     }
-//   });
-// });
+app.get('/recent-highlights', (req, res) => {
+  new Promise(function (resolve, reject) {
+    db.connection.query('SELECT * FROM videos', (error, results, fields) => {
+      if (error) {
+        res.send(error);
+      } else {
+        resolve(results);
+      }
+    });
+  })
+    .then((results) => JSON.parse(JSON.stringify(results)))
+    .then((data) => {
+      data.sort((a, b) => { return a.created_at - b.created_at; });
+      let temp = data.slice(0, 50);
+      temp.sort((a, b) => { return b.view_count - a.view_count; });
+      let recentHighlights = temp.slice(0, 15);
+      //console.log('RECENT HIGHLIGHTS =>', recentHighlights);
+      return res.send(recentHighlights);
+    });
+});
 
-// app.get('/clips', (req, res) => {
-//   db.connection.query('SELECT * FROM videos', (error, results, fields) => {
-//     if (error) {
-//       res.send(error);
-//     } else {
-//       res.send(JSON.parse(JSON.stringify(results)));
-//     }
-//   });
-// });
+app.get('/popular-clips', (req, res) => {
+  new Promise(function (resolve, reject) {
+    db.connection.query('SELECT * FROM clips', (error, results, fields) => {
+      if (error) {
+        res.send(error);
+      } else {
+        resolve(results);
+      }
+    });
+  })
+    .then((results) => JSON.parse(JSON.stringify(results)))
+    .then((data) => {
+      data.sort((a, b) => { return b.view_count - a.view_count; });
+      let popularClips = data.slice(0, 15);
+      //console.log('POPULAR CLIPS =>', popularClips);
+      return res.send(popularClips);
+    });
+});
 
 // port assignment needs re-writing
 // to adjust for deployment

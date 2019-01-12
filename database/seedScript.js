@@ -77,7 +77,10 @@ module.exports = () => {
     return new Promise(function (resolve, reject) {
       for (i = 0; i < result.games.length; i++) {
         let video = `INSERT INTO videos
-                (video_title,
+                (user_name,
+                game_name,
+                game_box_art_url,
+                video_title,
                 video_description,
                 url,
                 thumbnail_url,
@@ -87,15 +90,18 @@ module.exports = () => {
                 streamer_id,
                 game_id)
                 VALUES
-                ('${faker.hacker.verb() + ' ' + faker.hacker.noun()/* video_title */}',
-              '${faker.lorem.sentence()/* video_description */}',
-              '${faker.internet.url()/* url */}',
-              '${faker.random.image()/* thumbnail_url */}',
-              '${JSON.stringify(faker.date.recent()).substring(12, 20)/* duration */}:',
-              '${faker.random.number()/* view_count */}',
-              '${JSON.stringify(faker.date.recent()).substring(1, 11)/* created_at */}',
-              '${result.users[0].streamer_id/* streamer_id */}',
-              '${result.games[i].game_id/* game_id */}')`;
+                ('${faker.internet.userName()/* user_name */}',
+                  '${faker.hacker.verb() + ' ' + faker.hacker.noun()/* game_name */}',
+                  '${faker.random.image()/* game_box_art_url */}',
+                  '${faker.random.word() + ' ' + faker.random.word()/* video_title */}',
+                  '${faker.lorem.sentence()/* video_description */}',
+                  '${faker.internet.url()/* url */}',
+                  '${faker.random.image()/* thumbnail_url */}',
+                  '${JSON.stringify(faker.date.recent()).substring(12, 20)/* duration */}',
+                  '${faker.random.number()/* view_count */}',
+                  '${Math.floor((Math.random() * 101) + 1)/* created_at */}',
+                  '${result.users[0].streamer_id/* streamer_id */}',
+                  '${result.games[i].game_id/* game_id */}')`;
         if (i === result.games.length - 1) {
           db.connection.query(video, (err, res) => {
             if (err) {
@@ -127,7 +133,10 @@ module.exports = () => {
     return new Promise(function(resolve, reject){
       for (i = 0; i < result.games.length; i++) {
         let clip = `INSERT INTO clips
-            (clip_title,
+            (user_name,
+            game_name,
+            game_box_art_url,
+            clip_title,
             clip_description,
             url,
             thumbnail_url,
@@ -138,16 +147,19 @@ module.exports = () => {
             game_id,
             video_id)
             VALUES
-            ('${faker.hacker.verb() + ' ' + faker.hacker.noun()/* video_title */}',
-          '${faker.lorem.sentence()/* video_description */}',
-          '${faker.internet.url()/* url */}',
-          '${faker.random.image()/* thumbnail_url */}',
-          '${JSON.stringify(faker.date.recent()).substring(12, 20)/* duration */}:',
-          '${faker.random.number()/* view_count */}',
-          '${JSON.stringify(faker.date.recent()).substring(1, 11)/* created_at */}',
-          '${result.users[0].streamer_id/* streamer_id */}',
-          '${result.games[i].game_id/* game_id */}',
-          '${result.videos[i].video_id/* video_id */}')`;
+            ('${faker.internet.userName()/* user_name */}',
+              '${faker.hacker.verb() + ' ' + faker.hacker.noun()/* game_name */}',
+              '${faker.random.image()/* game_box_art_url */}',
+              '${faker.random.word()/* clip_title */}',
+              '${faker.lorem.sentence()/* clip_description */}',
+              '${faker.internet.url()/* url */}',
+              '${faker.random.image()/* thumbnail_url */}',
+              '${JSON.stringify(faker.date.recent()).substring(12, 20)/* duration */}',
+              '${faker.random.number()/* view_count */}',
+              '${Math.floor((Math.random() * 101) + 1)/* created_at */}',
+              '${result.users[0].streamer_id/* streamer_id */}',
+              '${result.games[i].game_id/* game_id */}',
+              '${result.videos[i].video_id/* video_id */}')`;
         if (i === result.games.length - 1) {
           db.connection.query(clip, (err, res) => {
             if (err) {

@@ -7,24 +7,52 @@ export default class Categorized_Lists extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
+      recentBroadcasts: null,
+      recentHighlights: null,
+      popularClips: null,
     }
-
   };
 
   componentDidMount() {
-    fetch('http://localhost:1128/popular')
+    let allVideos = {};
+    fetch('/recent-broadcasts')
     .then(response => response.json())
-    .then(data => this.setState({videos: data}));
-  }
+    .then((data) => {
+      allVideos.recentBroadcasts = data;
+      return fetch('/recent-highlights');
+    })
+    .then(response => response.json())
+    .then((data) => {
+      allVideos.recentHighlights = data;
+      return fetch('/popular-clips');
+    })
+    .then(response => response.json())
+    .then((data) => {
+      allVideos.popularClips = data;
+      return allVideos;
+    })
+    .then((allVideos) => {
+      //console.log(allVideos);
+      this.setState({
+        recentBroadcasts: allVideos.recentBroadcasts,
+        recentHighlights: allVideos.recentHighlights,
+        popularClips: allVideos.popularClips
+      });
+    });
+  };
 
   render() {
-    return (
-      <div>
-        <RecentBroadcasts videos={this.state.videos} />
-        <RecentHighlights videos={this.state.videos} />
-        <PopularClips videos={this.state.videos}/>
-      </div>
-    );
+    if (this.state.recentBroadcasts === null || this.state.recentHighlights === null || this.state.popularClips === null) {
+      return (<div data-testid="loading-div">Loading ...</div>);
+    } else {
+      return (
+        <div data-testid="main-container">
+          <RecentBroadcasts videos={this.state.recentBroadcasts} />
+          <RecentHighlights videos={this.state.recentHighlights} />
+          <PopularClips videos={this.state.popularClips} />
+        </div>
+      );
+    }
   }
 }
+

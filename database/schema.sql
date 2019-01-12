@@ -22,13 +22,16 @@ CREATE TABLE games (
 
 CREATE TABLE videos (
   video_id INT unsigned NOT NULL AUTO_INCREMENT,
+  user_name VARCHAR(100) NOT NULL,
+  game_name VARCHAR(150) NOT NULL,
+  game_box_art_url VARCHAR(1000) NOT NULL,
   video_title VARCHAR(150) NOT NULL,
   video_description VARCHAR(500),
   url VARCHAR(500) NOT NULL,
   thumbnail_url VARCHAR(500) NOT NULL,
   duration VARCHAR(9), /* 'HH:MM:SS[.fraction]' */
   view_count INT,
-  created_at DATE, /* 'YYYY-MM-DD' */
+  created_at INT, /* DATE 'YYYY-MM-DD' */
   streamer_id INT unsigned NOT NULL,
   game_id INT unsigned NOT NULL,
   PRIMARY KEY (video_id),
@@ -38,13 +41,16 @@ CREATE TABLE videos (
 
 CREATE TABLE clips (
   clip_id INT unsigned NOT NULL AUTO_INCREMENT,
+  user_name VARCHAR(100) NOT NULL,
+  game_name VARCHAR(150) NOT NULL,
+  game_box_art_url VARCHAR(1000) NOT NULL,
   clip_title VARCHAR(150) NOT NULL,
   clip_description VARCHAR(500),
   url VARCHAR(500) NOT NULL,
   thumbnail_url VARCHAR(500) NOT NULL,
   duration VARCHAR(9),
   view_count INT,
-  created_at DATE,
+  created_at INT,
   streamer_id INT unsigned NOT NULL,
   game_id INT unsigned NOT NULL,
   video_id INT unsigned NOT NULL,

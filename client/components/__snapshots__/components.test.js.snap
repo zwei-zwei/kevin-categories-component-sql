@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Categorized_Lists /> 1`] = `
+<div
+  data-testid="loading-div"
+>
+  Loading ...
+</div>
+`;
