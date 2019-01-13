@@ -28,7 +28,7 @@ export default class RecentHighlights extends React.Component {
     } else {
       return (
         <div data-testid="main-container">
-          <CarouselGenerator videos={this.state.videos} title={this.state.title}></CarouselGenerator>
+          <CarouselGenerator videos={this.state.videos} title={this.state.title} type='video'></CarouselGenerator>
         </div>
       );
     }

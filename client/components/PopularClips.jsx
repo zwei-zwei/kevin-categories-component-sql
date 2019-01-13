@@ -28,7 +28,7 @@ export default class PopularClips extends React.Component {
     } else {
       return (
         <div data-testid="main-container">
-          <CarouselGenerator videos={this.state.videos} title={this.state.title}></CarouselGenerator>
+          <CarouselGenerator videos={this.state.videos} title={this.state.title} type='clip'></CarouselGenerator>
         </div>
       );
     }

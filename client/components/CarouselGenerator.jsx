@@ -1,22 +1,22 @@
 import React from 'react';
 import Carousel from 'nuka-carousel';
 import SlideGenerator from './SlideGenerator.jsx';
-import { Container, Titles, PrevButton, NextButton } from './Styles.jsx';
+import { Container, Titles, PrevButton, NextButton, ExpandLink } from './Styles.jsx';
 
 export default class CarouselGenerator extends React.Component {
   render() {
     let slides = this.props.videos.map((video, index) => {
-      return (<SlideGenerator video={video} key={index}></SlideGenerator>);
+      return (<SlideGenerator video={video} key={index} type={this.props.type}></SlideGenerator>);
     });
 
     return (
       <div>
         <Container>
-          <Titles>{this.props.title} <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Expand All ></a></Titles>
+          <Titles>{this.props.title} <ExpandLink href={this.props.videos[0].url}>Expand All ></ExpandLink></Titles>
           <Carousel
-            slidesToShow={3}
-            wrapAround={true}
-            cellSpacing={30}
+            slidesToShow={2}
+            wrapAround={false}
+            cellSpacing={0}
             initialSlideHeight={220}
             initialSlideWidth={300}
             renderBottomCenterControls={false}
