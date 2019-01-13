@@ -29,6 +29,8 @@ CREATE TABLE videos (
   description VARCHAR(500),
   url VARCHAR(500) NOT NULL,
   thumbnail_url VARCHAR(500) NOT NULL,
+  user_url VARCHAR(500) NOT NULL,
+  game_url VARCHAR(500) NOT NULL,
   duration VARCHAR(9), /* 'HH:MM:SS[.fraction]' */
   view_count INT,
   created_at INT, /* DATE 'YYYY-MM-DD' */
@@ -48,6 +50,8 @@ CREATE TABLE clips (
   description VARCHAR(500),
   url VARCHAR(500) NOT NULL,
   thumbnail_url VARCHAR(500) NOT NULL,
+  user_url VARCHAR(500) NOT NULL,
+  game_url VARCHAR(500) NOT NULL,
   duration VARCHAR(9),
   view_count INT,
   created_at INT,
