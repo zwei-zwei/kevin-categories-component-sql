@@ -1,7 +1,8 @@
 import React from 'react';
 import Carousel from 'nuka-carousel';
 import SlideGenerator from './SlideGenerator.jsx';
-import { Container, Titles, PrevButton, NextButton, ExpandLink } from './Styles.jsx';
+import { Container, Titles, ExpandLink } from './Styles.jsx';
+import { PrevButton, NextButton } from './Buttons.jsx';
 
 export default class CarouselGenerator extends React.Component {
   render() {
@@ -11,7 +12,7 @@ export default class CarouselGenerator extends React.Component {
 
     return (
       <div>
-        <Container>
+        <Container className="mainContainer">
           <Titles>{this.props.title} <ExpandLink href={this.props.videos[0].url}>Expand All ></ExpandLink></Titles>
           <Carousel
             slidesToShow={2}

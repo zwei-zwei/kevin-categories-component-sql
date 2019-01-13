@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { PrevButton, NextButton } from './Buttons.jsx';
 
 const Container = styled.div`
   position: relative;
@@ -7,6 +8,14 @@ const Container = styled.div`
   height: 300px;
   margin-bottom: -20px;
   overflow: hidden;
+  &:hover ${PrevButton} {
+    background-color: #f2f2f2;
+    transform: translate(15px);
+  }
+  &:hover ${NextButton} {
+    background-color: #f2f2f2;
+    transform: translate(-15px);
+  }
 `;
 
 const Info = styled.div`
@@ -147,45 +156,46 @@ const TimeStamp = styled.div`
   color: white;
 `;
 
-const PrevButton = styled.button`
-  background-color: white;
-  border: none;
-  border-radius: 5px;
-  margin-left: 5px;
-  margin-bottom: 50px;
-  color: #6441a4;
-  padding: 22px 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-family: 'Verdana', sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-  box-shadow: -5px 10px 15px #d8d8d8;
-  :hover {
-    background-color: #f2f2f2;
-  }
-`;
+// const PrevButton = styled.button`
+//   background-color: white;
+//   border: none;
+//   border-radius: 5px;
+//   margin-left: -10px;
+//   margin-bottom: 50px;
+//   color: #6441a4;
+//   padding: 22px 10px;
+//   text-align: right;
+//   text-decoration: none;
+//   display: inline-block;
+//   font-family: 'Verdana', sans-serif;
+//   font-size: 15px;
+//   font-weight: bold;
+//   box-shadow: -5px 10px 15px #d8d8d8;
+//   transition: transform 150ms ease-in-out;
 
-const NextButton = styled.button`
-  background-color: white;
-  border: none;
-  border-radius: 5px;
-  margin-right: 5px;
-  margin-bottom: 50px;
-  color: #6441a4;
-  padding: 22px 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-family: "Verdana", sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-  box-shadow: 5px 10px 15px #d8d8d8;
-  :hover {
-    background-color: #f2f2f2;
-  }
-`;
+// `;
+
+// const NextButton = styled.button`
+//   background-color: white;
+//   border: none;
+//   border-radius: 5px;
+//   margin-right: -10px;
+//   margin-bottom: 50px;
+//   color: #6441a4;
+//   padding: 22px 10px;
+//   text-align: left;
+//   text-decoration: none;
+//   display: inline-block;
+//   font-family: "Verdana", sans-serif;
+//   font-size: 15px;
+//   font-weight: bold;
+//   box-shadow: 5px 10px 15px #d8d8d8;
+//   transition: transform 100ms ease-in-out;
+//   :hover {
+//     background-color: #f2f2f2;
+//     transform: translate(-15px);
+//   }
+// `;
 
 const ExpandLink = styled.a`
   margin-left: 5px;
