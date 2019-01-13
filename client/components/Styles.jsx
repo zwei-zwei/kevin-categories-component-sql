@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { keyframes } from "styled-components"
 import { PrevButton, NextButton } from './Buttons.jsx';
+import faker from 'faker';
 
 const Container = styled.div`
   position: relative;
@@ -26,6 +27,29 @@ const Info = styled.div`
   overflow: hidden;
 `;
 
+const imageCycle = keyframes`
+  0%, 19.99% {
+    opacity: 1;
+    background-image: url(${faker.random.image()});
+  }
+  20%, 39.99%{
+    opacity: 1;
+    background-image: url(${faker.random.image()});
+  }
+  40%, 59.99%{
+    opacity: 1;
+    background-image: url(${faker.random.image()});
+  }
+  60%, 79.99%{
+    opacity: 1;
+    background-image: url(${faker.random.image()});
+  }
+  80%, 100%{
+    opacity: 1;
+    background-image: url(${faker.random.image()});
+  }
+`;
+
 const Image = styled.div`
   position: relative;
   background-image: url(${props => props.img});
@@ -35,6 +59,9 @@ const Image = styled.div`
   height: 70%;
   width: 100%;
   overflow: hidden;
+  :hover {
+    animation: 4000ms ease-in-out ${imageCycle} infinite;
+  }
 `;
 
 const Details = styled.div``;

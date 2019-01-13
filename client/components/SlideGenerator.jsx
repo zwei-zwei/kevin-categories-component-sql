@@ -20,7 +20,7 @@ export default class SlideGenerator extends React.Component {
     return (
       <Info data-testid="video-info" key={this.props.key} className="slideInfo">
         <VideoLink href={this.props.video.url}>
-          <Image img={this.props.video.thumbnail_url}>
+          <Image img={this.props.video.thumbnail_url} stillOne={''} stillTwo={''}>
             <Duration>{slateOrArrow(this.props.type)} {this.props.video.duration}</Duration>
             <Views>{this.props.video.view_count} views</Views>
             <TimeStamp>{this.props.video.created_at} hours ago</TimeStamp>
