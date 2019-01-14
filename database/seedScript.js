@@ -93,19 +93,19 @@ module.exports = () => {
                 game_id)
                 VALUES
                 ('${faker.internet.userName()/* user_name */}',
-                  '${faker.hacker.verb() + ' ' + faker.hacker.noun()/* game_name */}',
-                  '${faker.random.image()/* game_box_art_url */}',
-                  '${faker.random.word() + ' ' + faker.random.word()/* title */}',
-                  '${faker.lorem.sentence()/* description */}',
-                  '${"https://www.youtube.com/watch?v=oHg5SJYRHA0"/* url */}',
-                  '${faker.random.image()/* thumbnail_url */}',
-                  '${"https://www.youtube.com/watch?v=oHg5SJYRHA0"/* user_url */}',
-                  '${"https://www.youtube.com/watch?v=oHg5SJYRHA0"/* game_url */}',
-                  '${JSON.stringify(faker.date.recent()).substring(12, 20)/* duration */}',
-                  '${faker.random.number()/* view_count */}',
-                  '${Math.floor((Math.random() * 101) + 1)/* created_at */}',
-                  '${result.users[0].streamer_id/* streamer_id */}',
-                  '${result.games[i].game_id/* game_id */}')`;
+                '${faker.hacker.verb() + ' ' + faker.hacker.noun()/* game_name */}',
+                '${faker.random.image()/* game_box_art_url */}',
+                '${faker.random.word()/* title */}',
+                '${faker.lorem.sentence()/* description */}',
+                '${"https://www.youtube.com/watch?v=oHg5SJYRHA0"/* url */}',
+                '${faker.random.image()/* thumbnail_url */}',
+                '${"https://www.youtube.com/watch?v=oHg5SJYRHA0"/* user_url */}',
+                '${"https://www.youtube.com/watch?v=oHg5SJYRHA0"/* game_url */}',
+                '${JSON.stringify(faker.date.recent()).substring(12, 20)/* duration */}',
+                '${faker.random.number()/* view_count */}',
+                '${Math.floor((Math.random() * 101) + 1)/* created_at */}',
+                '${result.users[0].streamer_id/* streamer_id */}',
+                '${result.games[i].game_id/* game_id */}')`;
         if (i === result.games.length - 1) {
           db.connection.query(video, (err, res) => {
             if (err) {
@@ -154,20 +154,20 @@ module.exports = () => {
           video_id)
           VALUES
           ('${faker.internet.userName()/* user_name */}',
-            '${faker.hacker.verb() + ' ' + faker.hacker.noun()/* game_name */}',
-            '${faker.random.image()/* game_box_art_url */}',
-            '${faker.random.word()/* title */}',
-            '${faker.lorem.sentence()/* description */}',
-            '${"https://www.youtube.com/watch?v=oHg5SJYRHA0"/* url */}',
-            '${faker.random.image()/* thumbnail_url */}',
-            '${"https://www.youtube.com/watch?v=oHg5SJYRHA0"/* user_url */}',
-            '${"https://www.youtube.com/watch?v=oHg5SJYRHA0"/* game_url */}',
-            '${JSON.stringify(faker.date.recent()).substring(12, 20)/* duration */}',
-            '${faker.random.number()/* view_count */}',
-            '${Math.floor((Math.random() * 101) + 1)/* created_at */}',
-            '${result.users[0].streamer_id/* streamer_id */}',
-            '${result.games[i].game_id/* game_id */}',
-            '${result.videos[i].video_id/* video_id */}')`;
+          '${faker.hacker.verb() + ' ' + faker.hacker.noun()/* game_name */}',
+          '${faker.random.image()/* game_box_art_url */}',
+          '${faker.random.word()/* title */}',
+          '${faker.lorem.sentence()/* description */}',
+          '${"https://www.youtube.com/watch?v=oHg5SJYRHA0"/* url */}',
+          '${faker.random.image()/* thumbnail_url */}',
+          '${"https://www.youtube.com/watch?v=oHg5SJYRHA0"/* user_url */}',
+          '${"https://www.youtube.com/watch?v=oHg5SJYRHA0"/* game_url */}',
+          '${JSON.stringify(faker.date.recent()).substring(12, 20)/* duration */}',
+          '${faker.random.number()/* view_count */}',
+          '${Math.floor((Math.random() * 101) + 1)/* created_at */}',
+          '${result.users[0].streamer_id/* streamer_id */}',
+          '${result.games[i].game_id/* game_id */}',
+          '${result.videos[i].video_id/* video_id */}')`;
         if (i === result.games.length - 1) {
           db.connection.query(clip, (err, res) => {
             if (err) {
