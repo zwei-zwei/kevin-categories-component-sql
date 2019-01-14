@@ -10,11 +10,9 @@ const Container = styled.div`
   margin-bottom: -20px;
   overflow: hidden;
   &:hover ${PrevButton} {
-    background-color: #f2f2f2;
     transform: translate(15px);
   }
   &:hover ${NextButton} {
-    background-color: #f2f2f2;
     transform: translate(-15px);
   }
 `;

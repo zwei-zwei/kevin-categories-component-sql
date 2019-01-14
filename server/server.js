@@ -1,8 +1,10 @@
 const express = require(`express`);
 const app = express();
 const bodyParser = require(`body-parser`);
+const cors = require('cors');
 const db = require('../database');
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../public`));
 
@@ -65,9 +67,7 @@ app.get('/popular-clips', (req, res) => {
     });
 });
 
-// port assignment needs re-writing
-// to adjust for deployment
-const port = 1128;
+const port = process.env.PORT || 1128;
 app.listen(port, () => {
   console.log(`listening on port ${port}`)
 });

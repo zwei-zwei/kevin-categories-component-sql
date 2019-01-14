@@ -17,6 +17,9 @@ const PrevButton = styled.button`
   font-weight: bold;
   box-shadow: -5px 10px 15px #d8d8d8;
   transition: transform 150ms ease-in-out;
+  :hover {
+    background-color: #f2f2f2;
+  }
 `;
 
 const NextButton = styled.button`
@@ -36,6 +39,9 @@ const NextButton = styled.button`
   font-weight: bold;
   box-shadow: 5px 10px 15px #d8d8d8;
   transition: transform 150ms ease-in-out;
+  :hover {
+    background-color: #f2f2f2;
+  }
 `;
 
 export { PrevButton, NextButton };
