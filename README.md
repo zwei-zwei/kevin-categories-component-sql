@@ -45,6 +45,8 @@ From within root directory, execute `schema.sql`:
 mysql -u root < database/schema.sql
 ```
 
+(if your MySQL requires a password use: `mysql -u root -p < database/schema.sql`)
+
 Now run the seed script:
 
 ```sh
