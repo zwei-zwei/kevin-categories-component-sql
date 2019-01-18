@@ -8,4 +8,13 @@ const slateOrArrow = (type) => {
   }
 };
 
-export { slateOrArrow }
+const gameNameOrClippedBy = (type, gameName, clippedBy) => {
+
+  if (type === 'video') {
+    return gameName;
+  } else if (type === 'clip') {
+    return `Clipped by ${clippedBy}`;
+  }
+}
+
+export { slateOrArrow, gameNameOrClippedBy }

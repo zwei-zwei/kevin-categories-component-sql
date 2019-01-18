@@ -7,7 +7,8 @@
     "build": "webpack -d --watch",
     "start": "nodemon server/server.js",
     "test": "jest --watchAll --coverage",
-    "seed": "node database/seedScript.js"
+    "seed": "node database/seedScript.js",
+    "seed-games": "node database/gameSeedScript.js"
   },
   "jest": {
     "automock": false,

@@ -21,6 +21,7 @@ export default class CarouselGenerator extends React.Component {
             initialSlideHeight={220}
             initialSlideWidth={300}
             renderBottomCenterControls={false}
+            framePadding={"22px"}
             renderCenterLeftControls={({ previousSlide }) => (
               <PrevButton onClick={previousSlide}>&#60;</PrevButton>
             )}
