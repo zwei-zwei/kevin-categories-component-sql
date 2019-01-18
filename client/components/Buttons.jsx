@@ -4,7 +4,7 @@ const PrevButton = styled.button`
   background-color: white;
   border: none;
   border-radius: 5px;
-  margin-left: -10px;
+  margin-left: -11px;
   margin-bottom: 50px;
   color: #6441a4;
   padding: 22px 10px;
@@ -15,7 +15,7 @@ const PrevButton = styled.button`
   font-family: 'Verdana', sans-serif;
   font-size: 15px;
   font-weight: bold;
-  box-shadow: -5px 10px 15px #d8d8d8;
+
   transition: transform 150ms ease-in-out;
   :hover {
     background-color: #f2f2f2;
@@ -26,7 +26,7 @@ const NextButton = styled.button`
   background-color: white;
   border: none;
   border-radius: 5px;
-  margin-right: -10px;
+  margin-right: -11px;
   margin-bottom: 50px;
   color: #6441a4;
   padding: 22px 10px;
@@ -37,7 +37,7 @@ const NextButton = styled.button`
   font-family: "Verdana", sans-serif;
   font-size: 15px;
   font-weight: bold;
-  box-shadow: 5px 10px 15px #d8d8d8;
+
   transition: transform 150ms ease-in-out;
   :hover {
     background-color: #f2f2f2;

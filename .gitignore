@@ -5,3 +5,6 @@ node_modules
 
 # webpack stuff
 client/dist/bundle.js
+
+# testing
+coverage

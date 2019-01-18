@@ -1,19 +1,21 @@
 import styled, { keyframes } from "styled-components"
 import { PrevButton, NextButton } from './Buttons.jsx';
-import faker from 'faker';
 
 const Container = styled.div`
   position: relative;
   background-size: cover;
   background-color: #fffdff;
   height: 300px;
-  margin-bottom: -20px;
+  margin-top: 0px;
+  margin-bottom: 20px;
   overflow: hidden;
   &:hover ${PrevButton} {
     transform: translate(15px);
+    box-shadow: -5px 10px 15px #d8d8d8;
   }
   &:hover ${NextButton} {
     transform: translate(-15px);
+    box-shadow: 5px 10px 15px #d8d8d8;
   }
 `;
 
@@ -25,32 +27,32 @@ const Info = styled.div`
   overflow: hidden;
 `;
 
-const imageCycle = keyframes`
+const imageCycle = (image1, image2, image3, image4, image5) => keyframes`
   0%, 19.99% {
     opacity: 1;
-    background-image: url(${faker.random.image()});
+    background-image: url(${image2});
   }
   20%, 39.99%{
     opacity: 1;
-    background-image: url(${faker.random.image()});
+    background-image: url(${image3});
   }
   40%, 59.99%{
     opacity: 1;
-    background-image: url(${faker.random.image()});
+    background-image: url(${image4});
   }
   60%, 79.99%{
     opacity: 1;
-    background-image: url(${faker.random.image()});
+    background-image: url(${image5});
   }
   80%, 100%{
     opacity: 1;
-    background-image: url(${faker.random.image()});
+    background-image: url(${image1});
   }
 `;
 
 const Image = styled.div`
   position: relative;
-  background-image: url(${props => props.img});
+  background-image: url(${props => props['data-stillone']});
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;
@@ -58,7 +60,7 @@ const Image = styled.div`
   width: 100%;
   overflow: hidden;
   :hover {
-    animation: 4000ms ease-in-out ${imageCycle} infinite;
+    animation: 4000ms ease-in-out ${props => imageCycle(props['data-stillone'], props['data-stilltwo'], props['data-stillthree'], props['data-stillfour'], props['data-stillfive'])} infinite;
   }
 `;
 
@@ -134,7 +136,9 @@ const Titles = styled.div`
   font-family: "Verdana", Sans-serif;
   font-size: 16px;
   font-weight: bold;
-  padding-bottom: 12px;
+  padding-bottom: 0px;
+  margin-left: 3%;
+  margin-bottom: -5px;
   overflow: hidden;
 `;
 
@@ -180,47 +184,6 @@ const TimeStamp = styled.div`
   font-weight: normal;
   color: white;
 `;
-
-// const PrevButton = styled.button`
-//   background-color: white;
-//   border: none;
-//   border-radius: 5px;
-//   margin-left: -10px;
-//   margin-bottom: 50px;
-//   color: #6441a4;
-//   padding: 22px 10px;
-//   text-align: right;
-//   text-decoration: none;
-//   display: inline-block;
-//   font-family: 'Verdana', sans-serif;
-//   font-size: 15px;
-//   font-weight: bold;
-//   box-shadow: -5px 10px 15px #d8d8d8;
-//   transition: transform 150ms ease-in-out;
-
-// `;
-
-// const NextButton = styled.button`
-//   background-color: white;
-//   border: none;
-//   border-radius: 5px;
-//   margin-right: -10px;
-//   margin-bottom: 50px;
-//   color: #6441a4;
-//   padding: 22px 10px;
-//   text-align: left;
-//   text-decoration: none;
-//   display: inline-block;
-//   font-family: "Verdana", sans-serif;
-//   font-size: 15px;
-//   font-weight: bold;
-//   box-shadow: 5px 10px 15px #d8d8d8;
-//   transition: transform 100ms ease-in-out;
-//   :hover {
-//     background-color: #f2f2f2;
-//     transform: translate(-15px);
-//   }
-// `;
 
 const ExpandLink = styled.a`
   margin-left: 5px;

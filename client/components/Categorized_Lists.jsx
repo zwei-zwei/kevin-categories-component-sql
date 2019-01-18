@@ -2,11 +2,13 @@ import React from 'react';
 import RecentBroadcasts from './RecentBroadcasts.jsx';
 import RecentHighlights from './RecentHighlights.jsx';
 import PopularClips from './PopularClips.jsx';
+import AllVideos from './AllVideos.jsx';
 
 export default class Categorized_Lists extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      allVideos: null,
       recentBroadcasts: null,
       recentHighlights: null,
       popularClips: null,
@@ -32,8 +34,9 @@ export default class Categorized_Lists extends React.Component {
       return allVideos;
     })
     .then((allVideos) => {
-      //console.log(allVideos);
+      let all = allVideos.recentBroadcasts.concat(allVideos.recentHighlights, allVideos.popularClips);
       this.setState({
+        allVideos: all,
         recentBroadcasts: allVideos.recentBroadcasts,
         recentHighlights: allVideos.recentHighlights,
         popularClips: allVideos.popularClips
@@ -50,6 +53,7 @@ export default class Categorized_Lists extends React.Component {
           <RecentBroadcasts videos={this.state.recentBroadcasts} />
           <RecentHighlights videos={this.state.recentHighlights} />
           <PopularClips videos={this.state.popularClips} />
+          <AllVideos videos={this.state.allVideos} />
         </div>
       );
     }
