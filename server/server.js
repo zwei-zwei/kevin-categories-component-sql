@@ -21,7 +21,7 @@ app.get('/recent-broadcasts', (req, res) => {
     .then((results) => JSON.parse(JSON.stringify(results)))
     .then((data) => {
       data.sort((a, b) => { return a.created_at - b.created_at; });
-      let recentBroadcasts = data.slice(0, 10);
+      let recentBroadcasts = data.slice(0, 8);
       //console.log('RECENT BROADCASTS =>', recentBroadcasts);
       return res.send(recentBroadcasts);
     });

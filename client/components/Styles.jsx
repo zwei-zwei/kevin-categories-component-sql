@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components"
 import { PrevButton, NextButton } from './Buttons.jsx';
-import faker from 'faker';
 
 const Container = styled.div`
   position: relative;
@@ -8,7 +7,7 @@ const Container = styled.div`
   background-color: #fffdff;
   height: 300px;
   margin-top: 0px;
-  margin-bottom: -5px;
+  margin-bottom: 20px;
   overflow: hidden;
   &:hover ${PrevButton} {
     transform: translate(15px);
@@ -137,7 +136,9 @@ const Titles = styled.div`
   font-family: "Verdana", Sans-serif;
   font-size: 16px;
   font-weight: bold;
-  padding-bottom: 12px;
+  padding-bottom: 0px;
+  margin-left: 3%;
+  margin-bottom: -5px;
   overflow: hidden;
 `;
 
