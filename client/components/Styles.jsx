@@ -4,7 +4,7 @@ import { PrevButton, NextButton } from './Buttons.jsx';
 const Container = styled.div`
   position: relative;
   background-size: cover;
-  background-color: #fffdff;
+  background-color: #faf9fa;
   height: 300px;
   margin-top: 0px;
   margin-bottom: 20px;
