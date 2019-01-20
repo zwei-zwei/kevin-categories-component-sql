@@ -18,16 +18,16 @@ export default class Categorized_Lists extends React.Component {
 
   componentDidMount() {
     let allVideos = {};
-    fetch('http://localhost:1128/recent-broadcasts')
+    fetch('/recent-broadcasts')
       .then(response => response.json())
       .then((data) => {
         allVideos.recentBroadcasts = data;
-        return fetch('http://localhost:1128/recent-highlights');
+        return fetch('/recent-highlights');
       })
       .then(response => response.json())
       .then((data) => {
         allVideos.recentHighlights = data;
-        return fetch('http://localhost:1128/popular-clips');
+        return fetch('/popular-clips');
       })
       .then(response => response.json())
       .then((data) => {
