@@ -1,11 +1,17 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  host: process.env.RDS_HOSTNAME,
-  user: process.env.RDS_USERNAME,
-  password: process.env.RDS_PASSWORD,
-  port: process.env.RDS_PORT,
+  host: 'localhost',
+  user: 'root',
+  password: 'toor',
   database: 'categories_module'
+
+
+  // host: process.env.RDS_HOSTNAME,
+  // user: process.env.RDS_USERNAME,
+  // password: process.env.RDS_PASSWORD,
+  // port: process.env.RDS_PORT,
+  // database: 'categories_module'
 });
 
 connection.connect((err) => {
@@ -19,7 +25,4 @@ connection.connect((err) => {
 module.exports.connection = connection;
 
 
-// host: 'localhost',
-//   user: 'root',
-//     password: 'toor',
-//       database: 'categories_module'
+
