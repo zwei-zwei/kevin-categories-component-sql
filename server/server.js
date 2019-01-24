@@ -63,7 +63,7 @@ app.get('/popular-clips', (req, res) => {
     .then((data) => {
       data.sort((a, b) => { return b.view_count - a.view_count; });
       let popularClips = data.slice(0, 8);
-      //console.log('POPULAR CLIPS =>', popularClips);
+      console.log('POPULAR CLIPS =>', popularClips);
       return res.send(popularClips);
     });
 });

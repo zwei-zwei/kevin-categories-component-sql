@@ -1,7 +1,7 @@
 const faker = require('faker');
 const db = require('./index.js');
 //import { videos, clips } from '/gameData.js';
-const gameData = require('./gameData.js');
+const gameData = require('./gameData2.js');
 
 module.exports = () => {
   new Promise(function (resolve, reject) {
