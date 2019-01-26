@@ -4,18 +4,35 @@ import RecentHighlights from './RecentHighlights.jsx';
 import PopularClips from './PopularClips.jsx';
 import AllVideos from './AllVideos.jsx';
 import { Switch, HashRouter, Route } from 'react-router-dom';
+// const gameData = require('../../database/gameData_webpImages.js');
+// const gameData = require('../../database/gameData.js');
+
+/*
+For faster loading static page, un-comment path to gameData_webpImages.js, above.
+And for non-optimized static page, un-comment path to gameData.js.
+*/
 
 export default class Categorized_Lists extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+
+      /* for dynamic page */
       allVideos: null,
       recentBroadcasts: null,
       recentHighlights: null,
       popularClips: null,
+
+      /* for static page */
+      // allVideos: gameData.allVideos,
+      // recentBroadcasts: gameData.recentBroadcasts,
+      // recentHighlights: gameData.recentHighlights,
+      // popularClips: gameData.popularClips,
+
     }
   };
 
+  /* for static page, comment out entire componentDidMount function */
   componentDidMount() {
     let allVideos = {};
     fetch('/recent-broadcasts')
@@ -61,6 +78,14 @@ export default class Categorized_Lists extends React.Component {
               </div>
             )} />
             <Route exact={true} path="/videos" render={() => (
+              <div data-testid="main-container">
+                <RecentBroadcasts videos={this.state.recentBroadcasts} />
+                <RecentHighlights videos={this.state.recentHighlights} />
+                <PopularClips videos={this.state.popularClips} />
+                <AllVideos videos={this.state.allVideos} />
+              </div>
+            )} />
+            <Route path="/videos/:videoId" render={() => (
               <div data-testid="main-container">
                 <RecentBroadcasts videos={this.state.recentBroadcasts} />
                 <RecentHighlights videos={this.state.recentHighlights} />

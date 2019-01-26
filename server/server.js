@@ -8,6 +8,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../public`));
 
+/* for static page, comment out all GET routes */
 app.get('/recent-broadcasts', (req, res) => {
   new Promise (function(resolve, reject) {
     db.connection.query('SELECT * FROM videos', (error, results, fields) => {
@@ -63,7 +64,7 @@ app.get('/popular-clips', (req, res) => {
     .then((data) => {
       data.sort((a, b) => { return b.view_count - a.view_count; });
       let popularClips = data.slice(0, 8);
-      console.log('POPULAR CLIPS =>', popularClips);
+      //console.log('POPULAR CLIPS =>', popularClips);
       return res.send(popularClips);
     });
 });
