@@ -7,8 +7,8 @@ node_modules
 # webpack stuff
 
 # testing
-coverage/
-client/components/_snapshots_/
+coverage/*
+client/components/_snapshots_/*
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
