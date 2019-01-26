@@ -8,6 +8,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../public`));
 
+/* for static page, comment out all GET routes */
 app.get('/recent-broadcasts', (req, res) => {
   new Promise (function(resolve, reject) {
     db.connection.query('SELECT * FROM videos', (error, results, fields) => {
@@ -20,6 +21,7 @@ app.get('/recent-broadcasts', (req, res) => {
   })
     .then((results) => JSON.parse(JSON.stringify(results)))
     .then((data) => {
+      //console.log('All Videos -->', data);
       data.sort((a, b) => { return a.created_at - b.created_at; });
       let recentBroadcasts = data.slice(0, 8);
       //console.log('RECENT BROADCASTS =>', recentBroadcasts);
@@ -67,7 +69,7 @@ app.get('/popular-clips', (req, res) => {
     });
 });
 
-const port = process.env.PORT || 1128;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`listening on port ${port}`)
 });
