@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-# kevin-categories-component
 =======
 # Categorization Component
 
@@ -54,6 +52,3 @@ Now run the seed script:
 npm run seed-games
 ```
 
-
-
->>>>>>> 4d476a592b8df6a89b731339016bec7310e768ea
