@@ -1,39 +1,39 @@
-const mysql = require('mysql');
+const mongoose = require('mongoose');
+const onlineDb = require('../config/keys');
 
-const connection = mysql.createConnection({
+mongoose.connect(onlineDb.mongoURI, { useNewUrlParser: true });
 
-  /* for local hosting or creating static bundle.js */
-  host: 'localhost',
-  user: 'root',
-  password: 'toor',
-  database: 'categories_module'
-
-/* for Elastic Beanstalk hosting connected to seeded RDS MySQL database */
-  // host: process.env.RDS_HOSTNAME,
-  // user: process.env.RDS_USERNAME,
-  // password: process.env.RDS_PASSWORD,
-  // port: process.env.RDS_PORT,
-  // database: 'categories_module'
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+  console.log('MongoDB has connected');
 });
 
-connection.connect((err) => {
-
-/* for local hosting or creating static bundle.js */
-  if (err) {
-    console.log(`ERROR: ${err.message}`);
-  } else {
-    console.log('database connected');
-  }
-
-/* for Elastic Beanstalk hosting connected to seeded RDS MySQL database */
-  // if (err) {
-  //   process.env['msg'] = 'Unable to connect to RDS - ' + err;
-  // } else {
-  //   process.env['msg'] = 'Success! Connected to RDS via ' + process.env.RDS_HOSTNAME;
-  // }
+const videosSchema = mongoose.Schema({
+  video_id: Number,
+  user_name: String,
+  game_name: String,
+  game_box_art_url: String,
+  title: String,
+  description: String,
+  clipped_by: String,
+  url: String,
+  thumbnail_url_1: String,
+  thumbnail_url_2: String,
+  thumbnail_url_3: String,
+  thumbnail_url_4: String,
+  thumbnail_url_5: String,
+  user_url: String,
+  game_url: String,
+  duration: Number,
+  view_count: Number,
+  created_at: {
+    type: Date,
+    default: Date.now
+  },
 });
 
-module.exports.connection = connection;
+const Videos = mongoose.model('Videos', videosSchema);
 
-
-
+module.exports = db;
+module.exports = Videos;
