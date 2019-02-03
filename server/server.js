@@ -1,8 +1,9 @@
 const express = require(`express`);
-const app = express();
 const bodyParser = require(`body-parser`);
 const cors = require('cors');
-const db = require('../database');
+const db = require('../database/index');
+
+const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -10,62 +11,26 @@ app.use(express.static(`${__dirname}/../public`));
 
 /* for static page, comment out all GET routes */
 app.get('/recent-broadcasts', (req, res) => {
-  new Promise (function(resolve, reject) {
-    db.connection.query('SELECT * FROM videos', (error, results, fields) => {
-      if (error) {
-        res.send(error);
-      } else {
-        resolve(results);
-      }
-    });
+  db.find({}, (err, data) => {
   })
-    .then((results) => JSON.parse(JSON.stringify(results)))
+    .limit(50)
     .then((data) => {
-      //console.log('All Videos -->', data);
-      data.sort((a, b) => { return a.created_at - b.created_at; });
-      let recentBroadcasts = data.slice(0, 8);
-      //console.log('RECENT BROADCASTS =>', recentBroadcasts);
-      return res.send(recentBroadcasts);
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err);
     });
 });
 
 app.get('/recent-highlights', (req, res) => {
-  new Promise(function (resolve, reject) {
-    db.connection.query('SELECT * FROM videos', (error, results, fields) => {
-      if (error) {
-        res.send(error);
-      } else {
-        resolve(results);
-      }
-    });
+  db.find({}, (err, data) => {
   })
-    .then((results) => JSON.parse(JSON.stringify(results)))
+    .limit(50)
     .then((data) => {
-      data.sort((a, b) => { return a.created_at - b.created_at; });
-      let temp = data.slice(0, 50);
-      temp.sort((a, b) => { return b.view_count - a.view_count; });
-      let recentHighlights = temp.slice(0, 8);
-      //console.log('RECENT HIGHLIGHTS =>', recentHighlights);
-      return res.send(recentHighlights);
-    });
-});
-
-app.get('/popular-clips', (req, res) => {
-  new Promise(function (resolve, reject) {
-    db.connection.query('SELECT * FROM clips', (error, results, fields) => {
-      if (error) {
-        res.send(error);
-      } else {
-        resolve(results);
-      }
-    });
-  })
-    .then((results) => JSON.parse(JSON.stringify(results)))
-    .then((data) => {
-      data.sort((a, b) => { return b.view_count - a.view_count; });
-      let popularClips = data.slice(0, 8);
-      //console.log('POPULAR CLIPS =>', popularClips);
-      return res.send(popularClips);
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err);
     });
 });
 

@@ -36,7 +36,7 @@ export default class SlideGenerator extends React.Component {
           </GameLink>
           <a href={this.props.video.url}><VideoTitles>{this.props.video.title}</VideoTitles></a>
           <a href={this.props.video.user_url}><GamerName>{this.props.video.user_name}</GamerName></a>
-          <a href={this.props.video.game_url}><GameTitle>{gameNameOrClippedBy(this.props.type, this.props.video.game_name, this.props.video.clipped_by)}</GameTitle></a>
+          <a href={this.props.video.game_url}><GameTitle>{gameNameOrClippedBy(this.props.type, this.props.video.game_name)}</GameTitle></a>
         </Details>
       </Info>
     );

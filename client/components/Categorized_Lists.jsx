@@ -1,7 +1,7 @@
 import React from 'react';
 import RecentBroadcasts from './RecentBroadcasts.jsx';
 import RecentHighlights from './RecentHighlights.jsx';
-import PopularClips from './PopularClips.jsx';
+// import PopularClips from './PopularClips.jsx';
 import AllVideos from './AllVideos.jsx';
 import { Switch, HashRouter, Route } from 'react-router-dom';
 // const gameData = require('../../database/gameData_webpImages.js');
@@ -21,7 +21,7 @@ export default class Categorized_Lists extends React.Component {
       allVideos: null,
       recentBroadcasts: null,
       recentHighlights: null,
-      popularClips: null,
+      // popularClips: null,
 
       /* for static page */
       // allVideos: gameData.allVideos,
@@ -44,26 +44,26 @@ export default class Categorized_Lists extends React.Component {
       .then(response => response.json())
       .then((data) => {
         allVideos.recentHighlights = data;
-        return fetch('/popular-clips');
-      })
-      .then(response => response.json())
-      .then((data) => {
-        allVideos.popularClips = data;
+      //   return fetch('/popular-clips');
+      // })
+      // .then(response => response.json())
+      // .then((data) => {
+      //   allVideos.popularClips = data;
         return allVideos;
       })
       .then((allVideos) => {
-        let all = allVideos.recentBroadcasts.concat(allVideos.recentHighlights, allVideos.popularClips);
+        let all = allVideos.recentBroadcasts.concat(allVideos.recentHighlights);
         this.setState({
           allVideos: all,
           recentBroadcasts: allVideos.recentBroadcasts,
           recentHighlights: allVideos.recentHighlights,
-          popularClips: allVideos.popularClips
+          // popularClips: allVideos.popularClips
         });
       });
   };
 
   render() {
-    if (this.state.recentBroadcasts === null || this.state.recentHighlights === null || this.state.popularClips === null) {
+    if (this.state.recentBroadcasts === null || this.state.recentHighlights === null) {
       return (<div data-testid="loading-div">Loading ...</div>);
     } else {
       return (
@@ -73,7 +73,6 @@ export default class Categorized_Lists extends React.Component {
               <div data-testid="main-container">
                 <RecentBroadcasts videos={this.state.recentBroadcasts} />
                 <RecentHighlights videos={this.state.recentHighlights} />
-                <PopularClips videos={this.state.popularClips} />
                 <AllVideos videos={this.state.allVideos} />
               </div>
             )} />
@@ -81,7 +80,6 @@ export default class Categorized_Lists extends React.Component {
               <div data-testid="main-container">
                 <RecentBroadcasts videos={this.state.recentBroadcasts} />
                 <RecentHighlights videos={this.state.recentHighlights} />
-                <PopularClips videos={this.state.popularClips} />
                 <AllVideos videos={this.state.allVideos} />
               </div>
             )} />
@@ -89,7 +87,6 @@ export default class Categorized_Lists extends React.Component {
               <div data-testid="main-container">
                 <RecentBroadcasts videos={this.state.recentBroadcasts} />
                 <RecentHighlights videos={this.state.recentHighlights} />
-                <PopularClips videos={this.state.popularClips} />
                 <AllVideos videos={this.state.allVideos} />
               </div>
             )} />

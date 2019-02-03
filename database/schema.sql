@@ -41,28 +41,28 @@ CREATE TABLE videos (
   FOREIGN KEY (game_id) REFERENCES games(game_id) ON DELETE CASCADE
 );
 
-CREATE TABLE clips (
-  clip_id INT unsigned NOT NULL AUTO_INCREMENT,
-  user_name VARCHAR(100) NOT NULL,
-  game_name VARCHAR(150) NOT NULL,
-  game_box_art_url VARCHAR(1000) NOT NULL,
-  title VARCHAR(150) NOT NULL,
-  description VARCHAR(500),
-  url VARCHAR(500) NOT NULL,
-  thumbnail_url VARCHAR(500) NOT NULL,
-  user_url VARCHAR(500) NOT NULL,
-  game_url VARCHAR(500) NOT NULL,
-  duration VARCHAR(9),
-  view_count INT,
-  created_at INT,
-  streamer_id INT unsigned NOT NULL,
-  game_id INT unsigned NOT NULL,
-  video_id INT unsigned NOT NULL,
-  PRIMARY KEY (clip_id),
-  FOREIGN KEY (streamer_id) REFERENCES users(streamer_id) ON DELETE CASCADE,
-  FOREIGN KEY (game_id) REFERENCES games(game_id) ON DELETE CASCADE,
-  FOREIGN KEY (video_id) REFERENCES videos(video_id) ON DELETE CASCADE
-);
+-- CREATE TABLE clips (
+--   clip_id INT unsigned NOT NULL AUTO_INCREMENT,
+--   user_name VARCHAR(100) NOT NULL,
+--   game_name VARCHAR(150) NOT NULL,
+--   game_box_art_url VARCHAR(1000) NOT NULL,
+--   title VARCHAR(150) NOT NULL,
+--   description VARCHAR(500),
+--   url VARCHAR(500) NOT NULL,
+--   thumbnail_url VARCHAR(500) NOT NULL,
+--   user_url VARCHAR(500) NOT NULL,
+--   game_url VARCHAR(500) NOT NULL,
+--   duration VARCHAR(9),
+--   view_count INT,
+--   created_at INT,
+--   streamer_id INT unsigned NOT NULL,
+--   game_id INT unsigned NOT NULL,
+--   video_id INT unsigned NOT NULL,
+--   PRIMARY KEY (clip_id),
+--   FOREIGN KEY (streamer_id) REFERENCES users(streamer_id) ON DELETE CASCADE,
+--   FOREIGN KEY (game_id) REFERENCES games(game_id) ON DELETE CASCADE,
+--   FOREIGN KEY (video_id) REFERENCES videos(video_id) ON DELETE CASCADE
+-- );
 
 
 /*

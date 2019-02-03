@@ -1,12 +1,6 @@
 const faker = require('faker');
 const db = require('./index.js');
 const gameData = require('./database/gameData.js');
-// const gameData = require('./gameData_webpImages.js');
-
-/*
-For faster loading static page, un-comment path to gameData_webpImages.js, above,
-and comment-out path to gameData.js.
-*/
 
 module.exports = () => {
   new Promise(function (resolve, reject) {
