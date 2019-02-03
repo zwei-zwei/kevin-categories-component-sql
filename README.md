@@ -51,5 +51,3 @@ Now run the seed script:
 npm run seed-games
 ```
 
-
-
