@@ -1,11 +1,9 @@
 import React from 'react';
 import RecentBroadcasts from './RecentBroadcasts.jsx';
 import RecentHighlights from './RecentHighlights.jsx';
-// import PopularClips from './PopularClips.jsx';
 import AllVideos from './AllVideos.jsx';
 import { Switch, HashRouter, Route } from 'react-router-dom';
-// const gameData = require('../../database/gameData_webpImages.js');
-// const gameData = require('../../database/gameData.js');
+
 
 /*
 For faster loading static page, un-comment path to gameData_webpImages.js, above.
@@ -21,14 +19,6 @@ export default class Categorized_Lists extends React.Component {
       allVideos: null,
       recentBroadcasts: null,
       recentHighlights: null,
-      // popularClips: null,
-
-      /* for static page */
-      // allVideos: gameData.allVideos,
-      // recentBroadcasts: gameData.recentBroadcasts,
-      // recentHighlights: gameData.recentHighlights,
-      // popularClips: gameData.popularClips,
-
     }
   };
 
@@ -44,11 +34,6 @@ export default class Categorized_Lists extends React.Component {
       .then(response => response.json())
       .then((data) => {
         allVideos.recentHighlights = data;
-      //   return fetch('/popular-clips');
-      // })
-      // .then(response => response.json())
-      // .then((data) => {
-      //   allVideos.popularClips = data;
         return allVideos;
       })
       .then((allVideos) => {
@@ -57,7 +42,6 @@ export default class Categorized_Lists extends React.Component {
           allVideos: all,
           recentBroadcasts: allVideos.recentBroadcasts,
           recentHighlights: allVideos.recentHighlights,
-          // popularClips: allVideos.popularClips
         });
       });
   };
