@@ -1,39 +1,86 @@
-const mongoose = require('mongoose');
-const onlineDb = require('../config/keys');
+const Sequelize = require('sequelize');
 
-mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true });
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  console.log('MongoDB has connected');
+const sequelize = new Sequelize('postgres', 'kevinphung', '', {
+  host: 'localhost',
+  dialect: 'postgres',
+  operatorsAliases: false,
+  define: {
+    timestamps: false
+  },
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
 });
 
-const videosSchema = mongoose.Schema({
-  video_id: Number,
-  user_name: String,
-  game_name: String,
-  game_box_art_url: String,
-  title: String,
-  description: String,
-  clipped_by: String,
-  url: String,
-  thumbnail_url_1: String,
-  thumbnail_url_2: String,
-  thumbnail_url_3: String,
-  thumbnail_url_4: String,
-  thumbnail_url_5: String,
-  user_url: String,
-  game_url: String,
-  duration: Number,
-  view_count: Number,
+const Video = sequelize.define('videos', {
+  video_id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+  },
+  user_name: {
+    type: Sequelize.STRING
+  },
+  game_name: {
+    type: Sequelize.STRING
+  },
+  game_box_art_url: {
+    type: Sequelize.STRING
+  },
+  title: {
+    type: Sequelize.STRING
+  },
+  description: {
+    type: Sequelize.STRING
+  },
+  clipped_by: {
+    type: Sequelize.STRING
+  },
+  url: {
+    type: Sequelize.STRING
+  },
+  thumbnail_url_1: {
+    type: Sequelize.STRING
+  },
+  thumbnail_url_2: {
+    type: Sequelize.STRING
+  },
+  thumbnail_url_3: {
+    type: Sequelize.STRING
+  },
+  thumbnail_url_4: {
+    type: Sequelize.STRING
+  },
+  thumbnail_url_5: {
+    type: Sequelize.STRING
+  },
+  user_url: {
+    type: Sequelize.STRING
+  },
+  game_url: {
+    type: Sequelize.STRING
+  },
+  duration: {
+    type: Sequelize.INTEGER
+  },
+  view_count: {
+    type: Sequelize.INTEGER
+  },
   created_at: {
-    type: Date,
-    default: Date.now
+    type: Sequelize.DATE
   },
 });
 
-const Videos = mongoose.model('Videos', videosSchema);
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
-module.exports = db;
-module.exports = Videos;
+module.exports = sequelize;
+module.exports = Video;
