@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# kevin-categories-component-sql
-=======
 # Categorization Component
 
 > This component uses sorting criteria to create and render lists of videos. The three basic sorting criteria are: Recent broadcasts, Recent highlights & uploads, and Popular clips. The lists that the component renders are 1-1 with the sorting criteria, i.e., there will be one list for each sorting criterion.
@@ -54,4 +51,3 @@ Now run the seed script:
 npm run seed-games
 ```
 
->>>>>>> 1eeb0f56ed2dd5384e5353f0912e6ba4fcc0141e
