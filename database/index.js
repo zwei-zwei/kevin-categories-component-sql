@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('postgres', 'kevinphung', '', {
+const sequelize = new Sequelize('twitch', 'kevinphung', '', {
   host: 'localhost',
   dialect: 'postgres',
   operatorsAliases: false,
@@ -72,6 +72,17 @@ const Video = sequelize.define('videos', {
     type: Sequelize.DATE
   },
 });
+
+// Video.sync({
+//   alter: true
+// })
+// .then((err) => {
+//   if(err) {
+//     console.log('An error occur while creating table');
+//   } else {
+//     console.log('Item table created successfully');
+//   }
+// });
 
 sequelize
   .authenticate()
