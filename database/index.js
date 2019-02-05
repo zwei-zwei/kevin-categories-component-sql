@@ -15,9 +15,19 @@ const sequelize = new Sequelize('twitch', 'kevinphung', '', {
   }
 });
 
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
+
 const Video = sequelize.define('videos', {
   video_id: {
     type: Sequelize.INTEGER,
+    autoIncrement: true,
     primaryKey: true,
   },
   user_name: {
@@ -73,25 +83,8 @@ const Video = sequelize.define('videos', {
   },
 });
 
-// Video.sync({
-//   alter: true
-// })
-// .then((err) => {
-//   if(err) {
-//     console.log('An error occur while creating table');
-//   } else {
-//     console.log('Item table created successfully');
-//   }
-// });
+// Video.sync({ force: true });
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
 
 module.exports = sequelize;
 module.exports = Video;

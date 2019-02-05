@@ -9,7 +9,7 @@ async function seedData(outer, inner) {
     let arr = [];
     for (let j = 0; j < inner; j++) {
       let obj = {
-        video_id: faker.random.number(),
+        // video_id: faker.random.number(),
         user_name: faker.internet.userName(),
         game_name: faker.commerce.productName(),
         game_box_art_url: faker.image.imageUrl(),
@@ -37,7 +37,7 @@ async function seedData(outer, inner) {
 }
 
 
-seedData(1, 100);
+seedData(1000, 10000);
 
 
 // const findAll = () => {
