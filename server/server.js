@@ -1,7 +1,7 @@
 const express = require(`express`);
 const bodyParser = require(`body-parser`);
 const cors = require('cors');
-const db = require('../database/index');
+const Video = require('../database/index');
 
 const app = express();
 
@@ -10,9 +10,19 @@ app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../public`));
 
 app.get('/recent-broadcasts', (req, res) => {
+  Video.findAll({ limit: 20 })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => console.log(err));
 });
 
 app.get('/recent-highlights', (req, res) => {
+  Video.findAll({ limit: 20 })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => console.log(err));
 });
 
 const port = process.env.PORT || 3000;
