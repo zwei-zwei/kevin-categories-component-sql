@@ -10,7 +10,10 @@ app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../public`));
 
 app.get('/recent-broadcasts', (req, res) => {
-  Video.findAll({ limit: 50 })
+  Video.findAll({
+    limit: 100,
+    order: [ ['video_id', 'DESC'] ]
+  })
     .then(data => {
       res.send(data);
     })
@@ -18,7 +21,10 @@ app.get('/recent-broadcasts', (req, res) => {
 });
 
 app.get('/recent-highlights', (req, res) => {
-  Video.findAll({ limit: 50 })
+  Video.findAll({
+    limit: 100,
+    order: [ ['video_id', 'DESC'] ]
+  })
     .then(data => {
       res.send(data);
     })
