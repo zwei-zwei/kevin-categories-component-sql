@@ -32,13 +32,15 @@ app.get('/recent-highlights', (req, res) => {
     .catch(err => console.log(err));
 });
 
-//POST requests
+//POST request
 app.post('/add-video', (req, res) => {
   if (!req.body) {
     console.log('Not Found');
   } else {
-    Video.create()
-    .then(video => res.sendStatus(201).json(video))
+    Video.create(req.body)
+    .then(video => {
+      res.send(video);
+    })
     .catch(err => console.log(err));
   }
 });
