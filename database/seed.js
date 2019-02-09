@@ -30,18 +30,9 @@ async function seedData(outer, inner) {
       }
       arr.push(obj);
     }
-    console.log(`it works!  seeding done!`)
     await Video.bulkCreate(arr)
       .catch(err => console.log(err));
   }
 }
 
-
 seedData(1000, 10000);
-
-
-// const findAll = () => {
-//   Video.findAll().catch(err => console.log(err));
-// }
-
-// findAll();
