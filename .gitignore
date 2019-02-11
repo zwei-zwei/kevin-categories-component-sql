@@ -15,7 +15,7 @@ client/components/_snapshots_/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 
-# Mongo
+# Security
 config
 
 # Bundle

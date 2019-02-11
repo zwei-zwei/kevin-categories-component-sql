@@ -14,7 +14,7 @@ async function seedData(outer, inner) {
         game_name: faker.commerce.productName(),
         game_box_art_url: faker.image.imageUrl(),
         title: faker.lorem.words(),
-        description: faker.lorem.sentences(),
+        description: faker.lorem.sentence(),
         clipped_by: faker.internet.userName(),
         url: faker.internet.url(),
         thumbnail_url_1: faker.image.imageUrl(),
@@ -36,3 +36,4 @@ async function seedData(outer, inner) {
 }
 
 seedData(1000, 10000);
+

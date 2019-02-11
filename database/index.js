@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
+const { postGresURI, postGresDB, postGresUser, postGresPassWord } = require('../config/keys');
 
-const sequelize = new Sequelize('twitch', 'kevinphung', '', {
-  host: 'localhost',
+const sequelize = new Sequelize(postGresDB, postGresUser, postGresPassWord, {
+  host: postGresURI,
   dialect: 'postgres',
   operatorsAliases: false,
   define: {
