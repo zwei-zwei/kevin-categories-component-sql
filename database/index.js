@@ -1,91 +1,40 @@
-const Sequelize = require('sequelize');
 const { postGresURI, postGresDB, postGresUser, postGresPassWord } = require('../config/keys');
 
-const sequelize = new Sequelize(postGresDB, postGresUser, postGresPassWord, {
-  host: postGresURI,
-  dialect: 'postgres',
-  operatorsAliases: false,
-  define: {
-    timestamps: false
-  },
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
+const knex =  require('knex')({
+  client: 'pg',
+  version: '7.8',
+  connection: {
+    host: postGresURI,
+    user: postGresUser,
+    password: postGresPassWord,
+    database: postGresDB
   }
 });
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
-
-const Video = sequelize.define('videos', {
-  video_id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
-  },
-  user_name: {
-    type: Sequelize.STRING
-  },
-  game_name: {
-    type: Sequelize.STRING
-  },
-  game_box_art_url: {
-    type: Sequelize.STRING
-  },
-  title: {
-    type: Sequelize.STRING
-  },
-  description: {
-    type: Sequelize.STRING
-  },
-  clipped_by: {
-    type: Sequelize.STRING
-  },
-  url: {
-    type: Sequelize.STRING
-  },
-  thumbnail_url_1: {
-    type: Sequelize.STRING
-  },
-  thumbnail_url_2: {
-    type: Sequelize.STRING
-  },
-  thumbnail_url_3: {
-    type: Sequelize.STRING
-  },
-  thumbnail_url_4: {
-    type: Sequelize.STRING
-  },
-  thumbnail_url_5: {
-    type: Sequelize.STRING
-  },
-  user_url: {
-    type: Sequelize.STRING
-  },
-  game_url: {
-    type: Sequelize.STRING
-  },
-  duration: {
-    type: Sequelize.INTEGER
-  },
-  view_count: {
-    type: Sequelize.INTEGER
-  },
-  created_at: {
-    type: Sequelize.DATE
-  },
+knex.schema.hasTable('video2').then((exists) => {
+  if (!exists) {
+    return knex.schema.createTable('video2', (table) => {
+      table.increments('video_id').primary();
+      table.string('user_name');
+      table.string('game_name');
+      table.string('game_box_art_url');
+      table.string('title');
+      table.string('description', 500);
+      table.string('clipped_by');
+      table.string('url');
+      table.string('thumbnail_url_1');
+      table.string('thumbnail_url_2');
+      table.string('thumbnail_url_3');
+      table.string('thumbnail_url_4');
+      table.string('thumbnail_url_5');
+      table.string('user_url');
+      table.string('game_url');
+      table.integer('duration');
+      table.integer('view_count');
+      table.timestamp('created_at').defaultTo(knex.fn.now());
+    });
+  } else {
+    console.log('Already exists!!');
+  }
 });
 
-// Video.sync({ force: true });
-
-
-module.exports = sequelize;
-module.exports = Video;
