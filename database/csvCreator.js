@@ -1,14 +1,14 @@
+const faker = require('faker');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
-const faker = require('faker');
 
-const filename = path.join(__dirname, 'output.csv');
+const csvFile = path.join(__dirname, 'output.csv');
 const output = [];
 
-function seedData() {
-  let data = [];
-  for (let i = 1; i < 2000000; i++) {
+const genCsvData = () => {
+  const entries = [];
+  for (let i = 1; i < 100; i++) {
     // iterations work 2m at time
     let obj = {
       video_id: i,
@@ -30,38 +30,38 @@ function seedData() {
       view_count: faker.random.number(),
       created_at: faker.date.recent(),
     }
-    data.push(obj);
+    entries.push(obj);
   }
-    data.forEach(d => {
+    entries.forEach(entry => {
       const row = [];
 
-        row.push(`"${d.video_id}"`);
-        row.push(`"${d.user_name}"`);
-        row.push(`"${d.game_name}"`);
-        row.push(`"${d.game_box_art_url}"`);
-        row.push(`"${d.title}"`);
-        row.push(`"${d.description}"`);
-        row.push(`"${d.clipped_by}"`);
-        row.push(`"${d.url}"`);
-        row.push(`"${d.thumbnail_url_1}"`);
-        row.push(`"${d.thumbnail_url_2}"`);
-        row.push(`"${d.thumbnail_url_3}"`);
-        row.push(`"${d.thumbnail_url_4}"`);
-        row.push(`"${d.thumbnail_url_5}"`);
-        row.push(`"${d.user_url}"`);
-        row.push(`"${d.game_url}"`);
-        row.push(`"${d.duration}"`);
-        row.push(`"${d.view_count}"`);
-        row.push(`"${d.created_at}"`);
+        row.push(`"${entry.video_id}"`);
+        row.push(`"${entry.user_name}"`);
+        row.push(`"${entry.game_name}"`);
+        row.push(`"${entry.game_box_art_url}"`);
+        row.push(`"${entry.title}"`);
+        row.push(`"${entry.description}"`);
+        row.push(`"${entry.clipped_by}"`);
+        row.push(`"${entry.url}"`);
+        row.push(`"${entry.thumbnail_url_1}"`);
+        row.push(`"${entry.thumbnail_url_2}"`);
+        row.push(`"${entry.thumbnail_url_3}"`);
+        row.push(`"${entry.thumbnail_url_4}"`);
+        row.push(`"${entry.thumbnail_url_5}"`);
+        row.push(`"${entry.user_url}"`);
+        row.push(`"${entry.game_url}"`);
+        row.push(`"${entry.duration}"`);
+        row.push(`"${entry.view_count}"`);
+        row.push(`"${entry.created_at}"`);
         output.push(row.join());
     });
 }
 
-seedData();
+genCsvData();
 
-fs.writeFileSync(filename, output.join(os.EOL)); // after file creation
+fs.writeFileSync(csvFile, output.join(os.EOL));
 
-// run appendFile to add to output file
+// after file creation, run appendFile to add additional entries to output file
 // fs.appendFileSync(filename, output.join(os.EOL));
 
 // JS memory heap issues
