@@ -80,12 +80,11 @@ const Video = sequelize.define('videos', {
     type: Sequelize.INTEGER
   },
   created_at: {
-    type: Sequelize.DATE
+    type: Sequelize.STRING
   },
 });
 
-// Video.sync({ force: true });
-
+// Video.sync({ force: true })
 
 module.exports = sequelize;
 module.exports = Video;
