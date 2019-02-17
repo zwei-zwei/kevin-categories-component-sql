@@ -3,13 +3,14 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const csvFile = path.join(__dirname, 'output.csv');
+const csvFile = path.join(__dirname, 'videos.csv');
 const output = [];
 
 const genCsvData = () => {
   const entries = [];
-  for (let i = 1; i < 2000000; i++) {
-    // iterations work 2m at time
+
+  for (let i = 1; i < 100; i++) {
+      // iterations work 2m at time
     let obj = {
       video_id: i,
       user_name: faker.internet.userName(),
@@ -30,30 +31,30 @@ const genCsvData = () => {
       view_count: faker.random.number(),
       created_at: faker.date.recent(),
     }
-    entries.push(obj);
+      entries.push(obj);
   }
     entries.forEach(entry => {
       const row = [];
 
-        row.push(`"${entry.video_id}"`);
-        row.push(`"${entry.user_name}"`);
-        row.push(`"${entry.game_name}"`);
-        row.push(`"${entry.game_box_art_url}"`);
-        row.push(`"${entry.title}"`);
-        row.push(`"${entry.description}"`);
-        row.push(`"${entry.clipped_by}"`);
-        row.push(`"${entry.url}"`);
-        row.push(`"${entry.thumbnail_url_1}"`);
-        row.push(`"${entry.thumbnail_url_2}"`);
-        row.push(`"${entry.thumbnail_url_3}"`);
-        row.push(`"${entry.thumbnail_url_4}"`);
-        row.push(`"${entry.thumbnail_url_5}"`);
-        row.push(`"${entry.user_url}"`);
-        row.push(`"${entry.game_url}"`);
-        row.push(`"${entry.duration}"`);
-        row.push(`"${entry.view_count}"`);
-        row.push(`"${entry.created_at}"`);
-        output.push(row.join());
+      row.push(`"${entry.video_id}"`);
+      row.push(`"${entry.user_name}"`);
+      row.push(`"${entry.game_name}"`);
+      row.push(`"${entry.game_box_art_url}"`);
+      row.push(`"${entry.title}"`);
+      row.push(`"${entry.description}"`);
+      row.push(`"${entry.clipped_by}"`);
+      row.push(`"${entry.url}"`);
+      row.push(`"${entry.thumbnail_url_1}"`);
+      row.push(`"${entry.thumbnail_url_2}"`);
+      row.push(`"${entry.thumbnail_url_3}"`);
+      row.push(`"${entry.thumbnail_url_4}"`);
+      row.push(`"${entry.thumbnail_url_5}"`);
+      row.push(`"${entry.user_url}"`);
+      row.push(`"${entry.game_url}"`);
+      row.push(`"${entry.duration}"`);
+      row.push(`"${entry.view_count}"`);
+      row.push(`"${entry.created_at}"`);
+      output.push(row.join());
     });
 }
 
