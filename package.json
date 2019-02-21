@@ -5,10 +5,10 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack -d --watch",
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
     "test": "jest --watchAll --coverage",
-    "seed": "node database/seed.js",
-    "fix-memory-limit": "LIMIT=12000 increase-memory-limit"
+    "seed": "node database/seed.js"
   },
   "jest": {
     "automock": false,
