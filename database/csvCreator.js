@@ -9,7 +9,7 @@ const output = [];
 const genCsvData = () => {
   const entries = [];
 
-  for (let i = 1; i < 100; i++) {
+  for (let i = 1; i < 2000000; i++) {
       // iterations work 2m at time
     let obj = {
       video_id: i,
