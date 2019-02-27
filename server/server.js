@@ -12,7 +12,7 @@ app.use(express.static(`${__dirname}/../public`));
 //GET requests
 app.get('/recent-broadcasts', (req, res) => {
   Video.findAll({
-    limit: 100,
+    limit: 10,
     order: [ ['video_id', 'DESC'] ]
   })
     .then(data => {
@@ -23,7 +23,7 @@ app.get('/recent-broadcasts', (req, res) => {
 
 app.get('/recent-highlights', (req, res) => {
   Video.findAll({
-    limit: 100,
+    limit: 10,
     order: [ ['video_id', 'DESC'] ]
   })
     .then(data => {
