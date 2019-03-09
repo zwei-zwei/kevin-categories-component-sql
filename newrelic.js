@@ -10,11 +10,11 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['Twitch Categories'],
+  app_name: ['Twitch Categories Service 2'],
   /**
    * Your New Relic license key.
    */
-  //license_key: newRelicKey,
+  license_key: 'e0ac79c58a72bf49b29cb6ef37f97f9bccecc9f6',
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
