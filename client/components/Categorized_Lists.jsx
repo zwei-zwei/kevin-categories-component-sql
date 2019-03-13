@@ -29,10 +29,6 @@ export default class Categorized_Lists extends React.Component {
       .then(response => response.json())
       .then((data) => {
         allVideos.recentBroadcasts = data;
-        return fetch('/recent-highlights');
-      })
-      .then(response => response.json())
-      .then((data) => {
         allVideos.recentHighlights = data;
         return allVideos;
       })

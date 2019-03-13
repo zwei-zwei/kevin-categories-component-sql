@@ -22,17 +22,6 @@ app.get('/recent-broadcasts', (req, res) => {
     .catch(err => console.log(err));
 });
 
-app.get('/recent-highlights', (req, res) => {
-  Video.findAll({
-    limit: 10,
-    order: [ ['video_id', 'DESC'] ]
-  })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => console.log(err));
-});
-
 app.get('/find-video', (req, res) => {
   if (!req.body) {
     console.log('Not Found');
