@@ -15,9 +15,6 @@ client/components/_snapshots_/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 
-# Security
-config
-
 # Bundle
 public/bundle.js
 
